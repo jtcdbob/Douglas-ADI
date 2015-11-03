@@ -62,7 +62,7 @@ int main(){
     double waveNumberX = 1.0;  // test problem x-coordinate wave number
     double waveNumberY = 1.0;  // test problem y-coordinate wave number
 
-    long systemSizeM = 50;
+    long systemSizeM = 2000;
     long   xPanel = systemSizeM;  // X panel count
     long   yPanel = systemSizeM;  // Y panel count
     double tol = 1.0e-6;  // Stopping tolerance
@@ -164,7 +164,7 @@ int main(){
     ClockIt clock2;
     clock2.start();
     while((diffNorm > tol)&&(iter < iterMax)){
-        relaxOp.apply(uk,ukp1);
+        //relaxOp.apply(uk,ukp1);
         // Evaluate the difference between iterates (using a relative norm)
         ukNorm = ukp1.normInf();
         uk -= ukp1;
