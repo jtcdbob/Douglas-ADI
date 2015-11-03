@@ -1,6 +1,7 @@
 #include <cmath>
 #include "GridFun2D.h"    // 2D grid function class
 #include "ClockIt.h"
+#include <unistd.h>
 
 #ifdef _OMP
     #include <omp.h>
@@ -54,7 +55,23 @@ double evaluateResidualNormInf(double alpha_x, double alpha_y, GridFun2D& u, Gri
     return residualNorm;
 }
 
-int main(){
+int main(int argc, char** argv){
+    long systemSizeM = 40; // Default
+    int threadCount = -1;   // Specifying number of threads to use.
+
+    // Set up environment parameters
+    int c;
+    extern char* optarg;
+    while ((c = getopt(argc, argv, "n:p:")) !=-1){
+        switch (c) {
+        case 'n': systemSizeM = atol(optarg); break;
+        case 'p': threadCount = atoi(optarg); break;
+        //default:
+        //    printf(stderr, "Unknown option (-%c)\n", c);
+        //    return -1;
+        }
+    }
+
     // Set up test problem
     double alpha = 2.0;
     double alphaX = alpha;  // Laplace operator-x prefactor
@@ -62,7 +79,7 @@ int main(){
     double waveNumberX = 1.0;  // test problem x-coordinate wave number
     double waveNumberY = 1.0;  // test problem y-coordinate wave number
 
-    long systemSizeM = 40;
+    //long systemSizeM = 40;
     long   xPanel = systemSizeM;  // X panel count
     long   yPanel = systemSizeM;  // Y panel count
     double tol = 1.0e-6;  // Stopping tolerance
@@ -102,17 +119,11 @@ int main(){
 
     // Set up openMP
     #ifdef _OMP
-        int threadCount = -1;   // Specifying number of threads to use.
-        std::cout << "Enter in number of threads: ";
-        std::cin >> threadCount;
-
         if(threadCount > omp_get_max_threads()){threadCount = omp_get_max_threads();}
         if(threadCount <= 0){threadCount = omp_get_max_threads();}
         omp_set_num_threads(threadCount);
 
-        printf("#############\n");
-        printf("############# Using OpenMP With %d Threads\n",omp_get_max_threads());
-        printf("#############\n");
+        printf("Using OpenMP With %d Threads\n",omp_get_max_threads());
         printf("\n");
     #endif
 

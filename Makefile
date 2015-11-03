@@ -8,6 +8,7 @@ endif
 
 include Makefile.in.$(PLATFORM)
 
+# ---
 # Main function
 all:
 	$(CC) $(CFLAGS) adi_main.cpp -o douglas-adi
@@ -16,13 +17,13 @@ douglas-adi.dSYM: douglas-adi
 	dsymutil douglas-adi -o douglas-adi.dSYM
 
 # ---
-# Rules for running
+# Rules for testing runs
 .PHONY: run run-local
 run:
 	qsub -l nodes=1:ppn=24 qrun.pbs
 
 run-local: 
-	./douglas-adi
+	./douglas-adi -n 40 -p 2
 
 # ---
 # Rules for profiling using iprofiler
