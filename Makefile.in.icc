@@ -5,6 +5,6 @@ CFLAGS=-g
 OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo -openmp #-D_OPENMP
 
 # Add this for the vectorization reports
-#ANALYSIS=-qopt-report=5 -qopt-report-phase=vec
+ANALYSIS=-qopt-report=5 -qopt-report-phase=vec
 
 CFLAGS+=$(OPTFLAGS) $(ANALYSIS)
