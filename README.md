@@ -8,7 +8,7 @@
 
 The [Alternating Direction Implicit][fw-wiki](ADI) method is a finite difference method for solving parabolic, hyperbolic and elliptic partial differential equations. We use a refined method by Jim Douglas, Jr that is introduced in the paper *Alternating Direction Methods for Three Space Variables*.
 
-[fw-wiki]: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+[fw-wiki]:https://en.wikipedia.org/wiki/Alternating_direction_implicit_method
 
 ## Our Goal
 
