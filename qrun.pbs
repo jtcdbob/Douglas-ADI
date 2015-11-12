@@ -7,4 +7,4 @@
 
 module load cs5220
 cd $PBS_O_WORKDIR
-./douglas-adi -n 200 -p 2
+./douglas-adi -n 1000 -p 24

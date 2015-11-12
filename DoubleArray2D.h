@@ -128,7 +128,7 @@ namespace Math270A{
         /// Returns the total number of data values
         long getDataSize()    const {return index1Size*index2Size;}
         /// Returns a pointer to the double array containing the data values
-        double* const getDataPointer() const {return dataPtr;}
+        double* getDataPointer() const {return dataPtr;}
         //  Input/Output
         //
         //  Prints out values as as if they were in the first Cartesian

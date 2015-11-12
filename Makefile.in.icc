@@ -2,9 +2,10 @@ CC=icc
 CFLAGS=-g
 
 # If you're using icc, these are good flags to try
-OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo -openmp #-D_OPENMP
+OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo
 
 # Add this for the vectorization reports
 ANALYSIS=-qopt-report=5 -qopt-report-phase=vec
 
 CFLAGS+=$(OPTFLAGS) $(ANALYSIS)
+OMP_CFLAGS=$(CFLAGS) -openmp -D_OMP
