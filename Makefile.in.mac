@@ -2,9 +2,10 @@ CC=g++-5
 CFLAGS=-g3 -DSYSTIME
 
 # If you're using clang, these are good flags to try
-OPTFLAGS=-Ofast -march=native -ffast-math -O3 -fopenmp -D_OMP
+OPTFLAGS=-Ofast -march=native -ffast-math -O3 
 
 # Add this flag to determine whether the compiler was able to vectorize
 #ANALYSIS=-Rpass-analysis=loop-vectorize
 
-CFLAGS+=$(OPTFLAGS) $(ANALYSIS)
+CFLAGS+=$(OPTFLAGS)
+OMP_CFLAGS=$(CFLAGS) -openmp -D_OMP
