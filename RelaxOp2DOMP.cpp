@@ -1,18 +1,5 @@
-#ifndef _RelaxOp2D_OMP_h
-#define _RelaxOp2D_OMP_h
+#include "RelaxOp2DOMP.h"
 
-#include "TriSolver.h"
-#include "GridFun2D.h"
-class RelaxOp2D{
-public:
-    double dt;
-    TriSolver triSolX, triSolY;
-    TriOperator triOpX, triOpY;
-    GridFun2D uStar, Fstar, uTemp;
-    std::vector<double> uX_Zero, uY_Zero;
-    void initialize(double, double, double, const GridFun2D&);
-    void apply(GridFun2D&, GridFun2D&);
-};
 
 void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const GridFun2D& f){
     dt = timestep;
@@ -144,14 +131,3 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
     uStar.extractYslice(uIn.xPanel, uYTemp);
     uOut.insertYslice(uIn.xPanel, uYTemp);
 }
-////################# DEBUG #######################
-//    std::cout << "######### After Y BackSolve ###########" << std::endl;
-//    for (long j = 0; j < uIn.yPanel + 1; j++) {
-//        for (long i = 0; i < uIn.xPanel + 1; i++) {
-//            std::cout << uOut.values(j,i) << "\t";
-//        }
-//        std::cout << std::endl;
-//    }
-//    std::cout << "####################" << std::endl;
-
-#endif

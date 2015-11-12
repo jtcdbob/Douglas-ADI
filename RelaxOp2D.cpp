@@ -1,18 +1,5 @@
-#ifndef _RelaxOp2D_OMP_h
-#define _RelaxOp2D_OMP_h
 
-#include "TriSolver.h"
-#include "GridFun2D.h"
-class RelaxOp2D{
-public:
-    double dt;
-    TriSolver triSolX, triSolY;
-    TriOperator triOpX, triOpY;
-    GridFun2D uStar, Fstar, uTemp;
-    std::vector<double> uX_Zero, uY_Zero;
-    void initialize(double, double, double, const GridFun2D&);
-    void apply(GridFun2D&, GridFun2D&);
-};
+#include "RelaxOp2D.h"
 
 void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const GridFun2D& f){
     dt = timestep;
@@ -20,7 +7,8 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
     Fstar = f; Fstar *= dt; // Initialize Fstar*dt
 
     long M = f.xPanel;      // Define system X size from the problem
-
+    uXTemp.resize(M+1); uXTempNew.resize(M+1);
+    uYTemp.resize(M+1); uYTempNew.resize(M+1);
     uX_Zero.resize(M+1);    // Square matrix assumed
     uY_Zero.resize(M+1);
 
@@ -37,7 +25,8 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
 
     double hx = f.hx;       // Define grid size for x;
     double a = alphaX*dt/(2*hx*hx), b = -2.0 * a; // Interior Points
-    for(long i = 0; i < M; i++){
+    long i;
+    for( i = 0; i < M; i++){
         loDiag[i] = a;
         upDiag[i] = a;
         diag[i] = b;
@@ -47,8 +36,7 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
 
     triOpX = TriOperator(M+1, loDiag, diag, upDiag); // Forward Solver in the x direction
 
-
-    for(long i = 0; i < M ; i++){ // Change the elements for backsolver
+    for( i = 0; i < M ; i++){ // Change the elements for backsolver
         loDiag[i] = -a;
         upDiag[i] = -a;
         diag[i] = 1 - b;
@@ -58,7 +46,6 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
 
     triSolX = TriSolver(M+1, loDiag, diag, upDiag); // Backsolver in the x direction
 
-
     long N = f.yPanel; //Define system Y size from the problem
     loDiag.resize(N);
     upDiag.resize(N);
@@ -66,7 +53,7 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
 
     double hy = f.hy; // Define grid size for x;
     a = alphaY*dt/(hy*hy); b = -2.0 * a; // Interior Points
-    for(long i = 0; i < N; i++){
+    for( i = 0; i < N; i++){
         loDiag[i] = a;
         upDiag[i] = a;
         diag[i] = b;
@@ -77,7 +64,7 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
     triOpY = TriOperator(N+1, loDiag, diag, upDiag);    // Forward Solver in the y direction
 
     a = alphaY*dt/(2*hy*hy); b = -2.0 * a;
-    for(long i = 0; i < N; i++){
+    for( i = 0; i < N; i++){
         loDiag[i] = - a;
         upDiag[i] = - a;
         diag[i] = 1 - b;
@@ -89,15 +76,10 @@ void RelaxOp2D::initialize(double timestep, double alphaX, double alphaY, const 
 }
 
 void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
-    std::vector<double> uXTemp, uYTemp;
-    std::vector<double> uXTempNew, uYTempNew;
-    uXTemp.resize(uStar.values.getIndex2Size()); uXTempNew.resize(uStar.values.getIndex2Size());
-    uYTemp.resize(uStar.values.getIndex1Size()); uYTempNew.resize(uStar.values.getIndex1Size());
 
     long i;
     uOut = uIn; // Apply identity operator
-#pragma omp parallel for private(i) firstprivate(uXTemp,uXTempNew) schedule(static) default(shared)
-    for (i = 1; i < uIn.yPanel; i++) { // Apply Forward X operator
+    for ( i = 1; i < uIn.yPanel; i++) { // Apply Forward X operator
         uIn.extractXslice(i, uXTemp);
         triOpX.apply(uXTemp, uXTempNew);
         uStar.insertXslice(i, uXTempNew);
@@ -105,8 +87,7 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
     uStar.insertXslice(0, uX_Zero); //Don't touch the boundary
     uStar.insertXslice(uIn.yPanel, uX_Zero);
 
-#pragma omp parallel for private(i) firstprivate(uYTemp,uYTempNew) schedule(static) default(shared)
-    for (i = 1; i < uIn.xPanel; i++) { // Apply Forward Y operator
+    for ( i = 1; i < uIn.xPanel; i++) { // Apply Forward Y operator
         uIn.extractYslice(i, uYTemp);
         triOpY.apply(uYTemp, uYTempNew);
         uTemp.insertYslice(i, uYTempNew);
@@ -116,10 +97,9 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
 
     uOut += uStar; // Complete arithmetic in the x direction
     uOut += uTemp;
-
     uOut -= Fstar;
-#pragma omp parallel for private(i) firstprivate(uXTemp,uXTempNew) schedule(static) default(shared)
-    for (i = 1; i < uIn.yPanel; i++) { // Apply Backsolver in the x direction
+
+    for ( i = 1; i < uIn.yPanel; i++) { // Apply Backsolver in the x direction
         uOut.extractXslice(i, uXTemp);
         triSolX.apply(uXTemp, uXTempNew);
         uStar.insertXslice(i, uXTempNew);
@@ -132,9 +112,7 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
     uTemp *= 0.5; // Divide by 2
     uStar -= uTemp; // Complete arithmetics in the y direction
 
-
-#pragma omp parallel for private(i) firstprivate(uYTemp,uYTempNew) schedule(static) default(shared)
-    for (i = 1; i < uIn.xPanel; i++) { // Apply Backsolver in the y direction
+    for ( i = 1; i < uIn.xPanel; i++) { // Apply Backsolver in the y direction
         uStar.extractYslice(i, uYTemp);
         triSolY.apply(uYTemp, uYTempNew);
         uOut.insertYslice(i, uYTempNew);
@@ -144,6 +122,7 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
     uStar.extractYslice(uIn.xPanel, uYTemp);
     uOut.insertYslice(uIn.xPanel, uYTemp);
 }
+
 ////################# DEBUG #######################
 //    std::cout << "######### After Y BackSolve ###########" << std::endl;
 //    for (long j = 0; j < uIn.yPanel + 1; j++) {
@@ -153,5 +132,3 @@ void RelaxOp2D::apply(GridFun2D& uIn, GridFun2D& uOut){
 //        std::cout << std::endl;
 //    }
 //    std::cout << "####################" << std::endl;
-
-#endif
