@@ -2,6 +2,8 @@
 #include "GridFun2D.h"    // 2D grid function class
 #include "ClockIt.h"
 #include <unistd.h>
+#include <cstdlib>
+#include <getopt.h>
 
 #ifdef _OMP
     #include <omp.h>
@@ -62,10 +64,11 @@ int main(int argc, char** argv){
     // Set up environment parameters
     int c;
     extern char* optarg;
-    while ((c = getopt(argc, argv, "n:p:")) !=-1){
+    const char* optstring = "n:p:";
+    while ((c = getopt(argc, argv, optstring)) !=-1){
         switch (c) {
-        case 'n': systemSizeM = atol(optarg); break;
-        case 'p': threadCount = atoi(optarg); break;
+            case 'n': systemSizeM = std::atol(optarg); break;
+            case 'p': threadCount = std::atoi(optarg); break;
         //default:
         //    printf(stderr, "Unknown option (-%c)\n", c);
         //    return -1;
