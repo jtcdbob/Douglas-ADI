@@ -78,6 +78,7 @@ public:
     void apply(std::vector<double>, std::vector<double>&); // Back solve for the system
 
 };
+
 TriSolver::TriSolver(const TriSolver& T){initialize(T);}; // Copy constructor
 TriSolver::TriSolver(long systemSize, std::vector<double>& loDiag,
                      std::vector<double>& diag, std::vector<double>& upDiag){
@@ -128,5 +129,4 @@ void TriSolver::apply(std::vector<double> f, std::vector<double>& u){
         u[i] = f[i] - upDiag_temp[i]*u[i+1];
     }
 }
-
 #endif
