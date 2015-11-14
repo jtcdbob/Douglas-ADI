@@ -1,4 +1,4 @@
-CC=g++-5
+CC=clang
 CFLAGS=-g3 -DSYSTIME
 
 # If you're using clang, these are good flags to try
@@ -8,4 +8,4 @@ OPTFLAGS=-Ofast -march=native -ffast-math -O3
 #ANALYSIS=-Rpass-analysis=loop-vectorize
 
 CFLAGS+=$(OPTFLAGS)
-OMP_CFLAGS=$(CFLAGS) -fopenmp -D_OMP
+OMP_CFLAGS=$(CFLAGS) #-fopenmp -D_OPENMP
