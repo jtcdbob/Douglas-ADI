@@ -15,6 +15,8 @@
 //#include "solvers.h"
 //#include <omp.h>
 
+#define PI 3.14159265358979323846
+
 void transpose(double* restrict u_t, const double* restrict u, const int n){
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -178,9 +180,9 @@ double normInf(const double* restrict u, const int n){
     return max;
 }
 double test_init(const double x, const double y, const double wx, const double wy, const double ax, const double ay){
-    double d2Xfact = (2.0*M_PI*wx)*(2.0*M_PI*wx);
-    double d2Yfact = (2.0*M_PI*wy)*(2.0*M_PI*wy);
-    return -(cos(2.0*M_PI*x*wx)*cos(2.0*M_PI*y*wy))/(ax*d2Xfact + ay*d2Yfact);
+    double d2Xfact = (2.0*PI*wx)*(2.0*PI*wx);
+    double d2Yfact = (2.0*PI*wy)*(2.0*PI*wy);
+    return -(cos(2.0*PI*x*wx)*cos(2.0*PI*y*wy))/(ax*d2Xfact + ay*d2Yfact);
 }
 
 
@@ -214,7 +216,7 @@ int main(int argc, char * argv[]) {
     double hx = (xMax-xMin)/(double)xPanel;
     double hy = (yMax-yMin)/(double)yPanel;
     
-    double dt_0 = 4*hx*hx/(alpha*M_PI*M_PI);  // Relaxation timestep
+    double dt_0 = 4*hx*hx/(alpha*PI*PI);  // Relaxation timestep
     
     // Echo input parameters
     printf("\n==== Douglas ADI Program Start ====\n");
@@ -248,7 +250,7 @@ int main(int argc, char * argv[]) {
         y =  yMin + j*hy;
         for(int i = 0; i < N; i++){
             x = xMin + i*hx;
-            f[j*N + i] = cos(2.0*M_PI*x*waveNumberX)*cos(2.0*M_PI*y*waveNumberY);
+            f[j*N + i] = cos(2.0*PI*x*waveNumberX)*cos(2.0*PI*y*waveNumberY);
         }
     }
     int index = 0;
@@ -353,10 +355,10 @@ int main(int argc, char * argv[]) {
             relaxOperation(uk, fstar+j*N*N, scratch, ax, bx, N);
         }
         ukNorm = normInf(uk, N);    // Check difference between iterates
-        for (int i = 0; i < N*N; i++) {
+        for ( int i = 0; i < N*N; i++) {
             uLast[i] -= uk[i];
         }
-        diffNorm = normInf(uLast, N)/ukNorm; // uLast.normInf();
+        diffNorm = normInf(uLast, N) / ukNorm; // uLast.normInf();
         iter++; // Update iterate
     }
     

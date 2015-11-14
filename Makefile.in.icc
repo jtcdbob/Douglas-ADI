@@ -1,5 +1,5 @@
 CC=icc
-CFLAGS=-g
+CFLAGS=-g -std=c99
 
 # If you're using icc, these are good flags to try
 OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo
