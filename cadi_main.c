@@ -99,7 +99,8 @@ void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const d
 //    free(scratch);
 }
 
-void solve_tri_special(double* restrict x, double* restrict cprime, const double a, const double b, const int n){
+void solve_tri_special(double* restrict x, const double a, const double b, const int n){
+//void solve_tri_special(double* restrict x, double* restrict cprime, const double a, const double b, const int n){
      /* 
      This solve is designed to solve a tridiagonal linear system using thomas' algorithm with the following structure:
      
@@ -114,7 +115,7 @@ void solve_tri_special(double* restrict x, double* restrict cprime, const double
      */
     
     // Allocate scratch space.
-//    double* cprime = (double*) malloc(sizeof(double) * n);
+    double* restrict cprime __attribute__((aligned(64))) = (double*) _mm_malloc(sizeof(double) * n, 64);
     cprime[0] = 0;
     double astar = -a;
     double bstar = 1-b;
@@ -130,7 +131,7 @@ void solve_tri_special(double* restrict x, double* restrict cprime, const double
     for (int i = n - 1; i-- > 0; )
         x[i] = x[i] - cprime[i] * x[i + 1];
     
-//    free(cprime);
+    _mm_free(cprime);
 }
 
 void relaxOperation(double * restrict u, const double * restrict fstar, double* scratch, double a, double b, int n){
@@ -156,17 +157,22 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
             u[i*n + j] += u_t[j*n+i];
         }
     }
-//#pragma omp parallel for
+#ifdef _OPENMP
+#pragma omp parallel for
+#endif
     for (int i = 1; i < n-1; i++) {
-        solve_tri_special(u+i*n, scratch, a/2, b/2, n);
+        solve_tri_special(u+i*n, a/2, b/2, n);
     }
     transpose(ustar, u, n);
     for (int i = 0; i < n*n; i++) {
         ustar[i] -= 0.5*u_t[i];
     }
-//#pragma omp parallel for
+#ifdef _OPENMP
+#pragma omp parallel for
+#endif
     for (int i = 1; i < n-1; i++) {
-        solve_tri_special(ustar+i*n, scratch, a/2, b/2, n);
+        //solve_tri_special(ustar+i*n, scratch, a/2, b/2, n);
+        solve_tri_special(ustar+i*n, a/2, b/2, n);
     }
     transpose(u, ustar, n);
     
