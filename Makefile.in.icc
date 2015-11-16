@@ -2,7 +2,9 @@ CC=icc
 CFLAGS=-g -std=c99
 
 # If you're using icc, these are good flags to try
-OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo
+OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo -restrict\
+		 -unroll-agressive -ftree-vectorize -opt-prefetch\
+		 -ansi-alias  #-ip
 
 # Add this for the vectorization reports
 ANALYSIS=-qopt-report=5 -qopt-report-phase=vec

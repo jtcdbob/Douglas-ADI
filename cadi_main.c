@@ -156,6 +156,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
             u[i*n + j] += u_t[j*n+i];
         }
     }
+//#pragma omp parallel for
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(u+i*n, scratch, a/2, b/2, n);
     }
@@ -163,6 +164,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     for (int i = 0; i < n*n; i++) {
         ustar[i] -= 0.5*u_t[i];
     }
+//#pragma omp parallel for
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(ustar+i*n, scratch, a/2, b/2, n);
     }
@@ -223,11 +225,19 @@ int main(int argc, char * argv[]) {
     printf("** X/Y Panel Count : %d/%d\n", xPanel, yPanel);
     
     int N = M+1; // vector size
-    double* f      = (double*) malloc(N*N*sizeof(double));
-    double* uk     = (double*) calloc(N*N, sizeof(double)); // initialize to 0
-    double* uLast  = (double*) malloc(N*N*sizeof(double));
+    //double* f      = (double*) malloc(N*N*sizeof(double));
+    //double* uk     = (double*) calloc(N*N, sizeof(double)); // initialize to 0
+    //double* uLast  = (double*) malloc(N*N*sizeof(double));
+    double* restrict f __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    double* restrict uk __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    double* restrict uLast __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    memset(uk, 0.0, N*N);
     double tol = 1.0e-6;  // Stopping tolerance
 
+
+    __assume_aligned(f, 64);
+    __assume_aligned(uk, 64);
+    __assume_aligned(uLast, 64);
     /*
         -> y    (j)
       ---------------------
@@ -281,12 +291,12 @@ int main(int argc, char * argv[]) {
         f [index + i*N]  = 0.0;
     }
     
-        // Set up OpenMP parameters
-//#ifdef _OPENMP
-//    if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
-//    else omp_set_num_threads(threadCount);
-//    printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
-//#endif
+   // Set up OpenMP parameters
+#ifdef _OPENMP
+    if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
+    else omp_set_num_threads(threadCount);
+    printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
+#endif
     
     // Initialize solver variables
     const int maxSweepSize = (int)ceil(log(M)/log(2)) + 1;
@@ -310,7 +320,8 @@ int main(int argc, char * argv[]) {
 //    apply_tri_special_plus(a, ax, bx, 5);
 //    b[0]=b[0];
     
-    double* fstar = (double*) malloc(maxSweepSize*N*N*sizeof(double));
+    //double* fstar = (double*) malloc(maxSweepSize*N*N*sizeof(double));
+    double* restrict fstar __attribute__((aligned(64))) = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
     for (int i = 0; i < maxSweepSize; i++) {
         int offset = i*N*N;
         for (int j = 0; j < N*N; j++) {
@@ -319,7 +330,7 @@ int main(int argc, char * argv[]) {
         dt *= 2*2;
     }
     
-    double* scratch = (double*) malloc(N*sizeof(double));
+    double* restrict scratch __attribute__((aligned(64))) = (double*) _mm_malloc(N*sizeof(double),64);
     
     printf("\n");
     
@@ -363,11 +374,11 @@ int main(int argc, char * argv[]) {
     }
     double t1 = omp_get_wtime();
     
-    free(scratch);
-    free(fstar);
-    free(f);
-    free(uk);
-    free(uLast);
+    _mm_free(scratch);
+    _mm_free(fstar);
+    _mm_free(f);
+    _mm_free(uk);
+    _mm_free(uLast);
     
     printf("==== Multi-scale Timstep Relaxation Output XXXX ====\n");
     printf("** Difference between iterates : \t\t\t\t%3.10f\n",diffNorm);
