@@ -12,8 +12,7 @@
 #include <math.h>
 #include <getopt.h>
 #include <unistd.h>
-//#include "solvers.h"
-//#include <omp.h>
+#include <omp.h>
 
 #define PI 3.14159265358979323846
 
@@ -332,6 +331,7 @@ int main(int argc, char * argv[]) {
 //        printf("\n");
 //    }
 
+    double t0 = omp_get_wtime();
     while((diffNorm > tol)&&(iter < iterMax)){
         memcpy(uLast, uk, N*N*sizeof(double)); // This can be avoided by swapping the roles for each iteration
         for (int j = 0; j < maxSweepSize; j++) {
@@ -361,6 +361,7 @@ int main(int argc, char * argv[]) {
         diffNorm = normInf(uLast, N) / ukNorm; // uLast.normInf();
         iter++; // Update iterate
     }
+    double t1 = omp_get_wtime();
     
     free(scratch);
     free(fstar);
@@ -373,7 +374,7 @@ int main(int argc, char * argv[]) {
     printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",iter*2*maxSweepSize);
     // Timing results
 //    printf("** Time it takes to initialize the multi-scale timestep solution is %e ms\n", elapsed_1);
-//    printf("** Time it takes to solve the multi-scale timestep solution is %e ms\n", elapsed_2);
+    printf("** Time it takes to solve the multi-scale timestep solution is %e ms\n", t1-t0);
 //    printf("** The total time is is %e ms\n", elapsed_1+elapsed_2);
     
     return 0;

@@ -2,9 +2,9 @@
 
 #PBS -l nodes=1:ppn=24
 #PBS -l walltime=0:30:00
-#PBS -N Z_douglas-adi-single-ampl
+#PBS -N Z_douglas-adi
 #PBS -j oe
 
 module load cs5220
 cd $PBS_O_WORKDIR
-amplxe-cl -collect advanced-hotspots ./douglas-adi -n 2000 -p 2
+./douglas-adi -n 1000 -p 24

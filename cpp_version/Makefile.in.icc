@@ -1,5 +1,5 @@
 CC=icc
-CFLAGS=-g -std=c99
+CFLAGS=-g 
 
 # If you're using icc, these are good flags to try
 OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo
@@ -8,4 +8,4 @@ OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo
 ANALYSIS=-qopt-report=5 -qopt-report-phase=vec
 
 CFLAGS+=$(OPTFLAGS) $(ANALYSIS)
-OMP_CFLAGS=$(CFLAGS) -openmp -D_OPENMP
+OMP_CFLAGS=$(CFLAGS) -openmp -D_OMP

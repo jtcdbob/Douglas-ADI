@@ -7,4 +7,4 @@
 
 module load cs5220
 cd $PBS_O_WORKDIR
-amplxe-cl -collect advanced-hotspots ./douglas-adi -n 2000 -p 2
+amplxe-cl -collect advanced-hotspots ./douglas-adi -n 200 -p 2
