@@ -110,9 +110,9 @@ int main(int argc, char * argv[]) {
 
    // Set up OpenMP parameters
 #ifdef _OPENMP
-    //if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
-    //else omp_set_num_threads(threadCount);
-    //printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
+    if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
+    else omp_set_num_threads(threadCount);
+    printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
 #endif
 
     // Initialize solver variables

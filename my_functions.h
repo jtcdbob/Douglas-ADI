@@ -7,6 +7,8 @@
 #endif
 
 void transpose(double* restrict u_t, const double* restrict u, const int n){
+    __assume_aligned(u_t, 64);
+    __assume_aligned(u, 64);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             u_t[j*n+i] = u[i*n+j];
@@ -29,6 +31,9 @@ void apply_tri_special(double* restrict u, double* restrict u_temp, const double
 
      There is little room for generalizing its application but it should yield great performance boost
      */
+    __assume_aligned(u, 64);
+    __assume_aligned(u_temp, 64);
+
     memcpy(u_temp, u, n*sizeof(double));
     for(int i = 1; i < n-1; i++){
         u[i] = a*(u_temp[i-1]+u_temp[i+1]) + b * u_temp[i];
@@ -50,6 +55,9 @@ void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const d
 
      There is little room for generalizing its application but it should yield great performance boost
      */
+    __assume_aligned(u, 64);
+    __assume_aligned(u_temp, 64);
+
     memcpy(u_temp, u, n*sizeof(double));
     for(int i = 1; i < n-1; i++){
         u[i] += a*(u_temp[i-1]+u_temp[i+1]) + b * u_temp[i];
@@ -93,8 +101,8 @@ void solve_tri_special(double* restrict x, const double a, const double b, const
 
 void relaxOperation(double * restrict u, const double * restrict fstar, double* scratch, double a, double b, int n){
 
-    double* ustar = (double*) malloc(n*n*sizeof(double));
-    double* u_t = (double*) malloc(n*n*sizeof(double));
+    double* restrict ustar __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
+    double* restrict u_t __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
     memcpy(ustar, u, n*n*sizeof(double));
     transpose(u_t, ustar, n);
     // keep two copies and then do it.
@@ -115,7 +123,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
         }
     }
 #ifdef _OPENMP
-//#pragma omp parallel for
+#pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(u+i*n, a/2, b/2, n);
@@ -125,15 +133,15 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
         ustar[i] -= 0.5*u_t[i];
     }
 #ifdef _OPENMP
-//#pragma omp parallel for
+#pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(ustar+i*n, a/2, b/2, n);
     }
     transpose(u, ustar, n);
 
-    free(ustar);
-    free(u_t);
+    _mm_free(ustar);
+    _mm_free(u_t);
 }
 double normInf(const double* restrict u, const int n){
     double max = u[0];
