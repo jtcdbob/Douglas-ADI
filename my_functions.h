@@ -2,6 +2,10 @@
 #define _MY_FUNCTIONS
 #endif
 
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif
+
 void transpose(double* restrict u_t, const double* restrict u, const int n){
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -10,35 +14,6 @@ void transpose(double* restrict u_t, const double* restrict u, const int n){
     }
 }
 
-//void apply_tri(double* restrict vOut, const double* restrict vIn,
-//               const double* restrict diag,  const double* restrict udiag,
-//               const double* restrict ldiag, const int n){
-//    vOut[0] = diag[0] * vIn[0] + udiag[0] * vIn[1];
-//    vOut[n-1] = diag[n-1] * vIn[n-1] + ldiag[n-2] * vIn[n-2];
-//    for(int i = 1; i < n-1; i++){
-//        vOut[i] = ldiag[i-1]*vIn[i-1] + diag[i]*vIn[i] + udiag[i]*vIn[i+1];
-//    }
-//}
-
-//void solve_tri(double* restrict x, const double* restrict ldiag,
-//               const double* restrict diag, const double* restrict udiag,
-//               const int n) {
-//    // Allocate scratch space.
-//    double* cprime = (double*) malloc(sizeof(double) * n);
-//    cprime[0] = udiag[0] / diag[0];
-//    x[0] = x[0] / diag[0];
-//    // loop from 1 to N - 1 inclusive
-//    for (int i = 1; i < n; i++) {
-//        double m = 1.0 / (diag[i] - ldiag[i-1] * cprime[i - 1]);
-//        cprime[i] = udiag[i] * m;
-//        x[i] = (x[i] - ldiag[i-1] * x[i - 1]) * m;
-//    }
-//    // loop from N - 2 to 0 inclusive, safely testing loop end condition
-//    for (int i = n - 1; i-- > 0; )
-//        x[i] = x[i] - cprime[i] * x[i + 1];
-//    // free scratch space
-//    free(cprime);
-//}
 
 void apply_tri_special(double* restrict u, double* restrict u_temp, const double a,  const double b, const int n){
     /*
@@ -54,14 +29,12 @@ void apply_tri_special(double* restrict u, double* restrict u_temp, const double
 
      There is little room for generalizing its application but it should yield great performance boost
      */
-//    double * u_copy = (double*) malloc(n * sizeof(double));
     memcpy(u_temp, u, n*sizeof(double));
     for(int i = 1; i < n-1; i++){
         u[i] = a*(u_temp[i-1]+u_temp[i+1]) + b * u_temp[i];
     }
     u[0] = 0.0;
     u[n-1] = 0.0;
-//    free(u_copy);
 }
 void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const double a,  const double b, const int n){
     /*
@@ -77,12 +50,10 @@ void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const d
 
      There is little room for generalizing its application but it should yield great performance boost
      */
-//    double* scratch = (double*) malloc(sizeof(double) * n);
     memcpy(u_temp, u, n*sizeof(double));
     for(int i = 1; i < n-1; i++){
         u[i] += a*(u_temp[i-1]+u_temp[i+1]) + b * u_temp[i];
     }
-//    free(scratch);
 }
 
 void solve_tri_special(double* restrict x, const double a, const double b, const int n){
@@ -157,7 +128,6 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
 //#pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
-        //solve_tri_special(ustar+i*n, scratch, a/2, b/2, n);
         solve_tri_special(ustar+i*n, a/2, b/2, n);
     }
     transpose(u, ustar, n);
@@ -177,3 +147,35 @@ double test_init(const double x, const double y, const double wx, const double w
     double d2Yfact = (2.0*PI*wy)*(2.0*PI*wy);
     return -(cos(2.0*PI*x*wx)*cos(2.0*PI*y*wy))/(ax*d2Xfact + ay*d2Yfact);
 }
+
+// Functions that are for more general purposes, not in use right now
+//
+//void apply_tri(double* restrict vOut, const double* restrict vIn,
+//               const double* restrict diag,  const double* restrict udiag,
+//               const double* restrict ldiag, const int n){
+//    vOut[0] = diag[0] * vIn[0] + udiag[0] * vIn[1];
+//    vOut[n-1] = diag[n-1] * vIn[n-1] + ldiag[n-2] * vIn[n-2];
+//    for(int i = 1; i < n-1; i++){
+//        vOut[i] = ldiag[i-1]*vIn[i-1] + diag[i]*vIn[i] + udiag[i]*vIn[i+1];
+//    }
+//}
+
+//void solve_tri(double* restrict x, const double* restrict ldiag,
+//               const double* restrict diag, const double* restrict udiag,
+//               const int n) {
+//    // Allocate scratch space.
+//    double* cprime = (double*) malloc(sizeof(double) * n);
+//    cprime[0] = udiag[0] / diag[0];
+//    x[0] = x[0] / diag[0];
+//    // loop from 1 to N - 1 inclusive
+//    for (int i = 1; i < n; i++) {
+//        double m = 1.0 / (diag[i] - ldiag[i-1] * cprime[i - 1]);
+//        cprime[i] = udiag[i] * m;
+//        x[i] = (x[i] - ldiag[i-1] * x[i - 1]) * m;
+//    }
+//    // loop from N - 2 to 0 inclusive, safely testing loop end condition
+//    for (int i = n - 1; i-- > 0; )
+//        x[i] = x[i] - cprime[i] * x[i + 1];
+//    // free scratch space
+//    free(cprime);
+//}

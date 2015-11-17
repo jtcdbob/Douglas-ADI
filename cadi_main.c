@@ -1,11 +1,3 @@
-//
-//  main.c
-//  DouglasADI
-//
-//  Created by Bob Chen on 11/12/15.
-//  Copyright © 2015 Bob. All rights reserved.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +6,11 @@
 #include <unistd.h>
 #include <omp.h>
 #include "my_functions.h"
+
+
+#ifndef PI
 #define PI 3.14159265358979323846
+#endif
 
 int main(int argc, char * argv[]) {
     int M = 200; // Problem size, assume square case
@@ -53,15 +49,11 @@ int main(int argc, char * argv[]) {
     printf("** X/Y Panel Count : %d/%d\n", xPanel, yPanel);
 
     int N = M+1; // vector size
-    //double* f      = (double*) malloc(N*N*sizeof(double));
-    //double* uk     = (double*) calloc(N*N, sizeof(double)); // initialize to 0
-    //double* uLast  = (double*) malloc(N*N*sizeof(double));
     double* restrict f __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
     double* restrict uk __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
     double* restrict uLast __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
     memset(uk, 0.0, N*N);
     double tol = 1.0e-6;  // Stopping tolerance
-
 
     __assume_aligned(f, 64);
     __assume_aligned(uk, 64);
@@ -137,7 +129,6 @@ int main(int argc, char * argv[]) {
     int   iter     = 0;
     double ukNorm = 0;
 
-    //double* fstar = (double*) malloc(maxSweepSize*N*N*sizeof(double));
     double* restrict fstar __attribute__((aligned(64))) = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
     for (int i = 0; i < maxSweepSize; i++) {
         int offset = i*N*N;
@@ -183,9 +174,7 @@ int main(int argc, char * argv[]) {
     printf("** Difference between iterates : \t\t\t\t%3.10f\n",diffNorm);
     printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",iter*2*maxSweepSize);
     // Timing results
-//    printf("** Time it takes to initialize the multi-scale timestep solution is %e ms\n", elapsed_1);
     printf("** Time it takes to solve the multi-scale timestep solution is %e ms\n", t1-t0);
-//    printf("** The total time is is %e ms\n", elapsed_1+elapsed_2);
 
     return 0;
 }

@@ -1,0 +1,20 @@
+Function                    Module        CPU Time  Spin Time  Overhead Time
+--------------------------  ------------  --------  ---------  -------------
+solve_tri_special           douglas-adi     4.072s         0s             0s
+solve_tri_special           douglas-adi     4.054s         0s             0s
+relaxOperation              douglas-adi     1.927s         0s             0s
+__intel_ssse3_rep_memcpy    douglas-adi     1.120s         0s             0s
+[Outside any known module]  [Unknown]       0.990s         0s             0s
+transpose                   douglas-adi     0.912s         0s             0s
+transpose                   douglas-adi     0.905s         0s             0s
+transpose                   douglas-adi     0.725s         0s             0s
+apply_tri_special_plus      douglas-adi     0.115s         0s             0s
+apply_tri_special           douglas-adi     0.093s         0s             0s
+main                        douglas-adi     0.072s         0s             0s
+__svml_cos4_l9              douglas-adi     0.009s         0s             0s
+normInf                     douglas-adi     0.009s         0s             0s
+normInf                     douglas-adi     0.009s         0s             0s
+_int_free                   libc-2.12.so    0.004s         0s             0s
+_int_malloc                 libc-2.12.so    0.004s         0s             0s
+__svml_cos4                 douglas-adi     0.001s         0s             0s
+malloc                      libc-2.12.so    0.001s         0s             0s
