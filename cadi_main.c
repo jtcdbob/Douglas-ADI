@@ -174,7 +174,7 @@ int main(int argc, char * argv[]) {
     printf("** Difference between iterates : \t\t\t\t%3.10f\n",diffNorm);
     printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",iter*2*maxSweepSize);
     // Timing results
-    printf("** Time it takes to solve the multi-scale timestep solution is %e ms\n", t1-t0);
+    printf("** Time it takes to solve the multi-scale timestep solution is %e s\n", t1-t0);
 
     return 0;
 }

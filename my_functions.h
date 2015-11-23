@@ -16,6 +16,91 @@ void transpose(double* restrict u_t, const double* restrict u, const int n){
     }
 }
 
+// New transpose function that deals with cache miss problem
+// Exact implementation is modified from
+// http://stackoverflow.com/questions/5200338/a-cache-efficient-matrix-transpose-program
+void transpose_cache(double* restrict dst,const double* restrict src, size_t n){
+    __assume_aligned(dst, 64);
+    __assume_aligned(src, 64);
+    size_t block=64;
+    for(size_t i = 0;i < n-block; i += block){
+        for(size_t j=0; j < n; ++j ){
+            for(size_t b = 0; b < block ; ++b){
+                dst[j*n+b]=src[b*n+j];
+            }
+        }
+    }
+    size_t start = n - n%block;
+    for(size_t j=0; j < n; ++j ){
+        for(size_t b = start; b < n; ++b){
+            dst[j*n+b]=src[b*n+j];
+        }
+    }
+    //for(size_t i = 0;i < n; i += block){
+    //    for(size_t j=0; j < n; ++j ){
+    //        for(size_t b = 0; b < block && i+b < n; ++b){
+    //            dst[j*n+b]=src[b*n+j];
+    //        }
+    //    }
+    //}
+}
+
+void vec_subtract(double* restrict u, const double* restrict v, size_t n){
+    __assume_aligned(u, 64);
+    __assume_aligned(v, 64);
+    size_t block=64;
+    for(size_t i = 0;i < n-block; i += block){
+        for(size_t j=0; j < n; ++j ){
+            for(size_t b = 0; b < block ; ++b){
+                u[j*n+b] -= v[j*n+b];
+            }
+        }
+    }
+    size_t start = n - n%block;
+    for(size_t j=0; j < n; ++j ){
+        for(size_t b = start; b < n; ++b){
+            u[j*n+b] -= v[j*n+b];
+        }
+    }
+}
+
+void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
+    __assume_aligned(u, 64);
+    __assume_aligned(v, 64);
+    size_t block=64;
+    for(size_t i = 0;i < n-block; i += block){
+        for(size_t j=0; j < n; ++j ){
+            for(size_t b = 0; b < block ; ++b){
+                u[b*n+j] += v[j*n+b];
+            }
+        }
+    }
+    size_t start = n - n%block;
+    for(size_t j=0; j < n; ++j ){
+        for(size_t b = start; b < n; ++b){
+            u[b*n+j] += v[j*n+b];
+        }
+    }
+}
+
+void vec_subtract_half(double* restrict u, const double* restrict v, size_t n){
+    __assume_aligned(u, 64);
+    __assume_aligned(v, 64);
+    size_t block=64;
+    for(size_t i = 0;i < n-block; i += block){
+        for(size_t j=0; j < n; ++j ){
+            for(size_t b = 0; b < block ; ++b){
+                u[j*n+b] -= 0.5*v[j*n+b];
+            }
+        }
+    }
+    size_t start = n - n%block;
+    for(size_t j=0; j < n; ++j ){
+        for(size_t b = start; b < n; ++b){
+            u[j*n+b] -= 0.5*v[j*n+b];
+        }
+    }
+}
 
 void apply_tri_special(double* restrict u, double* restrict u_temp, const double a,  const double b, const int n){
     /*
@@ -104,7 +189,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     double* restrict ustar __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
     double* restrict u_t __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
     memcpy(ustar, u, n*n*sizeof(double));
-    transpose(u_t, ustar, n);
+    transpose_cache(u_t, ustar, n);
     // keep two copies and then do it.
     for (int i = 1; i < n-1; i++) {
         apply_tri_special_plus(u+i*n, scratch, a/2, b/2, n);
@@ -114,31 +199,34 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     }
     memset(u_t, 0.0, n*sizeof(double));
     memset(u_t+(n-1)*n, 0.0, n*sizeof(double));
-    for (int i = 0; i < n*n; i++) {
-        u[i] -= fstar[i];
-    }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            u[i*n + j] += u_t[j*n+i];
-        }
-    }
+    //for (int i = 0; i < n*n; i++) {
+    //    u[i] -= fstar[i];
+    //}
+    vec_subtract(u, fstar, n);
+    //for (int i = 0; i < n; i++) {
+    //    for (int j = 0; j < n; j++) {
+    //        u[i*n + j] += u_t[j*n+i];
+    //    }
+    //}
+    vec_transpose_add(u, u_t, n);
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(u+i*n, a/2, b/2, n);
     }
-    transpose(ustar, u, n);
-    for (int i = 0; i < n*n; i++) {
-        ustar[i] -= 0.5*u_t[i];
-    }
+    transpose_cache(ustar, u, n);
+    //for (int i = 0; i < n*n; i++) {
+    //    ustar[i] -= 0.5*u_t[i];
+    //}
+    vec_subtract_half(ustar, u_t, n);
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(ustar+i*n, a/2, b/2, n);
     }
-    transpose(u, ustar, n);
+    transpose_cache(u, ustar, n);
 
     _mm_free(ustar);
     _mm_free(u_t);
