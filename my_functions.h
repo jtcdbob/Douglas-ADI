@@ -6,16 +6,6 @@
 #define PI 3.14159265358979323846
 #endif
 
-void transpose(double* restrict u_t, const double* restrict u, const int n){
-    __assume_aligned(u_t, 64);
-    __assume_aligned(u, 64);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            u_t[j*n+i] = u[i*n+j];
-        }
-    }
-}
-
 // New transpose function that deals with cache miss problem
 // Exact implementation is modified from
 // http://stackoverflow.com/questions/5200338/a-cache-efficient-matrix-transpose-program
@@ -36,19 +26,12 @@ void transpose_cache(double* restrict dst,const double* restrict src, size_t n){
             dst[j*n+b]=src[b*n+j];
         }
     }
-    //for(size_t i = 0;i < n; i += block){
-    //    for(size_t j=0; j < n; ++j ){
-    //        for(size_t b = 0; b < block && i+b < n; ++b){
-    //            dst[j*n+b]=src[b*n+j];
-    //        }
-    //    }
-    //}
 }
 
 void vec_subtract(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=64;
+    size_t block=128;
     for(size_t i = 0;i < n-block; i += block){
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
@@ -67,11 +50,12 @@ void vec_subtract(double* restrict u, const double* restrict v, size_t n){
 void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=64;
+    size_t block=128;
     for(size_t i = 0;i < n-block; i += block){
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
                 u[b*n+j] += v[j*n+b];
+                //u[j*n+b] += v[b*n+j];
             }
         }
     }
@@ -79,6 +63,7 @@ void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
     for(size_t j=0; j < n; ++j ){
         for(size_t b = start; b < n; ++b){
             u[b*n+j] += v[j*n+b];
+           //u[j*n+b] += v[b*n+j];
         }
     }
 }
@@ -86,7 +71,7 @@ void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
 void vec_subtract_half(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=64;
+    size_t block=128;
     for(size_t i = 0;i < n-block; i += block){
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
@@ -199,29 +184,18 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     }
     memset(u_t, 0.0, n*sizeof(double));
     memset(u_t+(n-1)*n, 0.0, n*sizeof(double));
-    //for (int i = 0; i < n*n; i++) {
-    //    u[i] -= fstar[i];
-    //}
     vec_subtract(u, fstar, n);
-    //for (int i = 0; i < n; i++) {
-    //    for (int j = 0; j < n; j++) {
-    //        u[i*n + j] += u_t[j*n+i];
-    //    }
-    //}
     vec_transpose_add(u, u_t, n);
 #ifdef _OPENMP
-#pragma omp parallel for
+//#pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(u+i*n, a/2, b/2, n);
     }
     transpose_cache(ustar, u, n);
-    //for (int i = 0; i < n*n; i++) {
-    //    ustar[i] -= 0.5*u_t[i];
-    //}
     vec_subtract_half(ustar, u_t, n);
 #ifdef _OPENMP
-#pragma omp parallel for
+//#pragma omp parallel for
 #endif
     for (int i = 1; i < n-1; i++) {
         solve_tri_special(ustar+i*n, a/2, b/2, n);
@@ -274,4 +248,14 @@ double test_init(const double x, const double y, const double wx, const double w
 //        x[i] = x[i] - cprime[i] * x[i + 1];
 //    // free scratch space
 //    free(cprime);
+//}
+
+//void transpose(double* restrict u_t, const double* restrict u, const int n){
+//    __assume_aligned(u_t, 64);
+//    __assume_aligned(u, 64);
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            u_t[j*n+i] = u[i*n+j];
+//        }
+//    }
 //}
