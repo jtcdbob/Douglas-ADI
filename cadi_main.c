@@ -155,11 +155,12 @@ int main(int argc, char * argv[]) {
             bx /= 2*2;
             relaxOperation(uk, fstar+j*N*N, scratch, ax, bx, N);
         }
-        ukNorm = normInf(uk, N);    // Check difference between iterates
+        ukNorm = normInf_cache(uk,N);
+        //vec_subtract(uLast, uk, N);
         for ( int i = 0; i < N*N; i++) {
             uLast[i] -= uk[i];
         }
-        diffNorm = normInf(uLast, N) / ukNorm; // uLast.normInf();
+        diffNorm = normInf_cache(uLast, N) / ukNorm; // uLast.normInf();
         iter++; // Update iterate
     }
     double t1 = omp_get_wtime();
@@ -171,7 +172,7 @@ int main(int argc, char * argv[]) {
     _mm_free(uLast);
 
     printf("==== Multi-scale Timstep Relaxation Output XXXX ====\n");
-    printf("** Difference between iterates : \t\t\t\t%3.10f\n",diffNorm);
+    printf("** Difference between iterates : \t%lf\n",diffNorm);
     printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",iter*2*maxSweepSize);
     // Timing results
     printf("** Time it takes to solve the multi-scale timestep solution is %e s\n", t1-t0);
