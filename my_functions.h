@@ -13,7 +13,7 @@ void transpose_cache(double* restrict dst,const double* restrict src, size_t n){
     __assume_aligned(dst, 64);
     __assume_aligned(src, 64);
     size_t block=64;
-    for(size_t i = 0;i < n-block; i += block)
+    for(size_t i = 0; i < n-block; i += block)
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
                 dst[j*n+b]=src[b*n+j];
@@ -29,7 +29,7 @@ void transpose_cache(double* restrict dst,const double* restrict src, size_t n){
 void vec_subtract(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=128;
+    size_t block=64;
     for(size_t i = 0;i < n-block; i += block)
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
@@ -46,7 +46,7 @@ void vec_subtract(double* restrict u, const double* restrict v, size_t n){
 void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=128;
+    size_t block=64;
     for(size_t i = 0;i < n-block; i += block)
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
@@ -63,7 +63,7 @@ void vec_transpose_add(double* restrict u, const double* restrict v, size_t n){
 void vec_subtract_half(double* restrict u, const double* restrict v, size_t n){
     __assume_aligned(u, 64);
     __assume_aligned(v, 64);
-    size_t block=128;
+    size_t block=64;
     for(size_t i = 0;i < n-block; i += block)
         for(size_t j=0; j < n; ++j ){
             for(size_t b = 0; b < block ; ++b){
@@ -77,7 +77,7 @@ void vec_subtract_half(double* restrict u, const double* restrict v, size_t n){
         }
 }
 
-static inline
+inline
 void apply_tri_special(double* restrict u, double* restrict u_temp, const double a,  const double b, const int n){
     /*
      This operator is designed to apply a tridiagonal matrix multiplication with the following
@@ -103,7 +103,7 @@ void apply_tri_special(double* restrict u, double* restrict u_temp, const double
     u[N] = 0.0;
 }
 
-static inline
+inline
 void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const double a,  const double b, const int n){
     /*
      This operator is designed to apply a tridiagonal matrix multiplication with the following
@@ -128,7 +128,6 @@ void apply_tri_special_plus(double* restrict u, double* restrict u_temp, const d
     }
 }
 
-static inline
 void solve_tri_special(double* restrict x, const double a, const double b, const int n){
 //void solve_tri_special(double* restrict x, double* restrict cprime, const double a, const double b, const int n){
      /*
@@ -145,7 +144,8 @@ void solve_tri_special(double* restrict x, const double a, const double b, const
      */
 
     // Allocate scratch space.
-    double* restrict cprime __attribute__((aligned(64))) = (double*) _mm_malloc(sizeof(double) * n, 64);
+    //double* restrict cprime __attribute__((aligned(64))) = (double*) _mm_malloc(sizeof(double) * n, 64);
+    double* cprime = (double*) _mm_malloc(sizeof(double) * n, 64);
     cprime[0] = 0;
     double astar = -a;
     double bstar = 1-b;
@@ -167,8 +167,10 @@ void solve_tri_special(double* restrict x, const double a, const double b, const
 
 void relaxOperation(double * restrict u, const double * restrict fstar, double* scratch, double a, double b, int n){
 
-    double* restrict ustar __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
-    double* restrict u_t __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
+    //double* restrict ustar __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
+    //double* restrict u_t __attribute__((aligned(64))) = (double*) _mm_malloc(n*n*sizeof(double),64);
+    double* ustar = (double*) _mm_malloc(n*n*sizeof(double),64);
+    double* u_t = (double*) _mm_malloc(n*n*sizeof(double),64);
     transpose_cache(u_t, u, n);
     // keep two copies and then do it.
     for (int i = 1; i < n-1; i++) {
@@ -181,7 +183,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     memset(u_t+(n-1)*n, 0.0, n*sizeof(double));
     vec_subtract(u, fstar, n);
     vec_transpose_add(u, u_t, n);
-    int j;
+//  int j;
 //#ifdef _OPENMP
 //#pragma omp parallel for private(j) //schedule(dynamic) default(shared)
 //#endif
@@ -197,9 +199,11 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
 //        solve_tri_special(ustar+j*n, a/2, b/2, n);
 //    }
 
+    int j;
 #pragma omp parallel
  {
-#pragma omp for private(j) schedule(static)
+#pragma omp for private(j) //schedule(static)
+    #pragma vector aligned
     for (j = 1; j < n-1; j++) {
         solve_tri_special(u+j*n, a/2, b/2, n);
     }
@@ -208,13 +212,13 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     transpose_cache(ustar, u, n);
     vec_subtract_half(ustar, u_t, n);
     }
-#pragma omp for private(j) schedule(static)
+#pragma omp for private(j) //schedule(static)
+    #pragma vector aligned
     for (j = 1; j < n-1; j++) {
         solve_tri_special(ustar+j*n, a/2, b/2, n);
     }
  }
     transpose_cache(u, ustar, n);
-
     _mm_free(ustar);
     _mm_free(u_t);
 }
