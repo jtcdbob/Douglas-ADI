@@ -202,7 +202,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     int j;
 #pragma omp parallel
  {
-#pragma omp for private(j) //schedule(static)
+#pragma omp for private(j) schedule(dynamic, 8)
     #pragma vector aligned
     for (j = 1; j < n-1; j++) {
         solve_tri_special(u+j*n, a/2, b/2, n);
@@ -212,7 +212,7 @@ void relaxOperation(double * restrict u, const double * restrict fstar, double* 
     transpose_cache(ustar, u, n);
     vec_subtract_half(ustar, u_t, n);
     }
-#pragma omp for private(j) //schedule(static)
+#pragma omp for private(j) schedule(dynamic, 8)
     #pragma vector aligned
     for (j = 1; j < n-1; j++) {
         solve_tri_special(ustar+j*n, a/2, b/2, n);
