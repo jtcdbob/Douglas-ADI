@@ -149,6 +149,7 @@ int main(int argc, char * argv[]) {
 
     // Start timer and main solver loop
     double t0 = omp_get_wtime();
+    int half_iteration = 0;
     while((diffNorm > tol)&&(counter < iterMax)){
         memcpy(uLast, uk, N*N*sizeof(double)); // Save the last result for checking
         for (int j = 0; j < maxSweepSize; j++) {
@@ -161,7 +162,7 @@ int main(int argc, char * argv[]) {
             uLast[i] -= uk[i];
         }
         diffNorm = normInf_cache(uLast, N) / ukNorm; // Get difference norm
-        if(diffNorm < tol) break;
+        if(diffNorm < tol) { half_iteration = 1; break;}
         memcpy(uLast, uk, N*N*sizeof(double));
         for (int j = maxSweepSize-2; j > -1 ; j--) {
             ax /= 2*2;
@@ -186,7 +187,7 @@ int main(int argc, char * argv[]) {
 
     printf("==== Multi-scale Timstep Relaxation Output XXXX ====\n");
     printf("** Difference between iterates : \t%lf\n",diffNorm);
-    printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",counter*2*maxSweepSize);
+    printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",counter*2*maxSweepSize + half_iteration * maxSweepSize);
     printf("** Time it takes to solve the multi-scale timestep solution is %e s\n", t1-t0);
     return 0;
 }
