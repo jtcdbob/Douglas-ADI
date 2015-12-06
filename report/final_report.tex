@@ -1,0 +1,87 @@
+\documentclass[a4paper,11pt]{article}
+% My own packages
+\usepackage{amsmath, amsthm, amssymb} %For advanced math
+\usepackage{graphicx} %Graphics
+\usepackage{float} %Floating Graphics
+\usepackage{enumerate} %Enumerate
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[margin={2cm,3cm},hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{minted}
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[L]{CS 5220 Final Project} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{CS 5220 Final Project \\ \Large Alternating Directional Implicit ADI}} % Article title
+\author{
+\large
+\textsc{Batu Inal [bi49], Bob(Kunhe) Chen [kc853]}\\
+\normalsize Cornell University \\ % Your institution
+[2mm] 
+%\textsc{Lab Partner:}
+\vspace{-20mm}
+}
+\date{}
+%----------------------------------------------------------------------------------------
+\begin{document}
+\setlength{\textwidth}{500pt}
+\maketitle % Insert title
+\thispagestyle{fancy} % All pages have headers and footers
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+\noindent %Abstract
+%% Change Title and Fancy Head Parts first !!
+\end{abstract}
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+\begin{multicols}{2}
+\section{Alternating Directional Implicit}
+	\subsection{Application} 2D -> 3D
+	\subsection{Algorithm}
+	\subsection{Convergence}
+	\subsection{Sweeping}
+\section{Implementation}
+	\subsection{C++ Version} What has been done and stuffs
+	\subsection{C Version}
+\section{Optimization}
+	\subsection{Bottleneck}
+	\subsection{Vectorization}
+	\subsection{Small changes}
+	\subsection{Cache Friendly Operations}
+	\subsection{Load Balancing}
+\section{Performance}
+	\subsection{Current bottleneck}
+	\subsection{Strong \& Weak Scaling}
+	\subsection{Comparison with Previous Work}
+\section{Discussion}
+	\subsection{What has been done}
+	\subsection{What might be interesting to look into}
+\end{multicols}
+\begin{minted}{c}
+
+\end{minted}
+\end{document}
