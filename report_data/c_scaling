@@ -1,0 +1,132 @@
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 200/200
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 90 
+
+** Time it takes to solve the multi-scale timestep solution is 1.448550e-01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 400/400
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 80 
+
+** Time it takes to solve the multi-scale timestep solution is 5.322092e-01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 800/800
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 77 
+
+** Time it takes to solve the multi-scale timestep solution is 2.114972e+00 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 1200/1200
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 72 
+
+** Time it takes to solve the multi-scale timestep solution is 4.472458e+00 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 1600/1600
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 60 
+
+** Time it takes to solve the multi-scale timestep solution is 6.675765e+00 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 2000/2000
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 60 
+
+** Time it takes to solve the multi-scale timestep solution is 1.038839e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 2400/2400
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 65 
+
+** Time it takes to solve the multi-scale timestep solution is 1.626956e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 2800/2800
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 65 
+
+** Time it takes to solve the multi-scale timestep solution is 2.256855e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 3200/3200
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 65 
+
+** Time it takes to solve the multi-scale timestep solution is 2.946284e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 3600/3600
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 65 
+
+** Time it takes to solve the multi-scale timestep solution is 3.688855e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 4000/4000
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 65 
+
+** Time it takes to solve the multi-scale timestep solution is 4.646443e+01 s

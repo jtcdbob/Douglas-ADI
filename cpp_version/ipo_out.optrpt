@@ -1,0 +1,906 @@
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at adi_main.cpp(68,5)
+   remark #15521: loop was not vectorized: explicitly compute the iteration count before executing the loop or try using canonical loop form
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(110,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at adi_main.cpp(112,9)
+   <Peeled>
+   LOOP END
+
+   LOOP BEGIN at adi_main.cpp(112,9)
+      remark #15389: vectorization support: reference dataPtr has unaligned access   [ adi_main.cpp(114,21) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15410: vectorization support: conversion from int to float will be emulated   [ adi_main.cpp(113,25) ]
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 220 
+      remark #15477: vector loop cost: 23.500 
+      remark #15478: estimated potential speedup: 8.400 
+      remark #15479: lightweight vector operations: 14 
+      remark #15481: heavy-overhead vector operations: 1 
+      remark #15482: vectorized math library calls: 1 
+      remark #15487: type converts: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at adi_main.cpp(112,9)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(92,32) inlined into adi_main.cpp(127,8)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(93,36) inlined into adi_main.cpp(127,8)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at GridFun2D.h(93,36) inlined into adi_main.cpp(127,8)
+         remark #15389: vectorization support: reference dataPtr has unaligned access   [ GridFun2D.h(94,19) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15399: vectorization support: unroll factor set to 2
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector loop cost summary ---
+         remark #15476: scalar loop cost: 7 
+         remark #15477: vector loop cost: 3.000 
+         remark #15478: estimated potential speedup: 2.150 
+         remark #15479: lightweight vector operations: 2 
+         remark #15481: heavy-overhead vector operations: 1 
+         remark #15488: --- end vector loop cost summary ---
+      LOOP END
+
+      LOOP BEGIN at GridFun2D.h(93,36) inlined into adi_main.cpp(127,8)
+      <Remainder>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(128,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between dataPtr line 132 and dataPtr line 139
+   remark #15346: vector dependence: assumed OUTPUT dependence between dataPtr line 139 and dataPtr line 132
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(141,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between dataPtr line 145 and dataPtr line 152
+   remark #15346: vector dependence: assumed OUTPUT dependence between dataPtr line 152 and dataPtr line 145
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(161,5)
+   remark #15520: loop was not vectorized: loop with early exits cannot be vectorized unless it meets search loop idiom criteria
+LOOP END
+
+LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(178,15)
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(178,15)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   LOOP END
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(178,15)
+   <Remainder, Multiversioned v2>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(179,9)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(181,16)
+      remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+      LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(181,16)
+      <Multiversioned v2>
+         remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+      LOOP END
+
+      LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(181,16)
+      <Remainder, Multiversioned v2>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at adi_main.cpp(183,9)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(185,16)
+      remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+      LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(185,16)
+      <Multiversioned v2>
+         remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+      LOOP END
+
+      LOOP BEGIN at DoubleArray2D.h(76,13) inlined into adi_main.cpp(185,16)
+      <Remainder, Multiversioned v2>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(100,32) inlined into adi_main.cpp(187,23)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(187,23)
+   <Peeled>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(187,23)
+      remark #15389: vectorization support: reference dataPtr has unaligned access   [ GridFun2D.h(102,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 15 
+      remark #15477: vector loop cost: 1.500 
+      remark #15478: estimated potential speedup: 7.020 
+      remark #15479: lightweight vector operations: 6 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(187,23)
+   <Remainder>
+      remark #15389: vectorization support: reference dataPtr has unaligned access   [ GridFun2D.h(102,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(187,23)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(70,32) inlined into adi_main.cpp(188,15)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between dataPtr line 72 and dataPtr line 72
+   remark #15346: vector dependence: assumed ANTI dependence between dataPtr line 72 and dataPtr line 72
+
+   LOOP BEGIN at GridFun2D.h(71,36) inlined into adi_main.cpp(188,15)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between dataPtr line 72 and dataPtr line 72
+      remark #15346: vector dependence: assumed ANTI dependence between dataPtr line 72 and dataPtr line 72
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(71,36) inlined into adi_main.cpp(188,15)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(100,32) inlined into adi_main.cpp(189,26)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(189,26)
+   <Peeled>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(189,26)
+      remark #15389: vectorization support: reference dataPtr has unaligned access   [ GridFun2D.h(102,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 15 
+      remark #15477: vector loop cost: 1.500 
+      remark #15478: estimated potential speedup: 7.020 
+      remark #15479: lightweight vector operations: 6 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(189,26)
+   <Remainder>
+      remark #15389: vectorization support: reference dataPtr has unaligned access   [ GridFun2D.h(102,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(101,36) inlined into adi_main.cpp(189,26)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(102,4) inlined into adi_main.cpp(204,5)
+   remark #15382: vectorization support: call to function RelaxOp2D::~RelaxOp2D(RelaxOp2D *) cannot be vectorized   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(93,18) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at adi_main.cpp(177,5)
+   remark #15341: loop was not vectorized: nonstandard loop is not a vectorization candidate
+LOOP END
+===========================================================================
+
+Begin optimization report for: RelaxOp2D::apply(RelaxOp2D *, GridFun2D &, GridFun2D &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(106,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(107,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(115,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(116,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(63,27) inlined into RelaxOp2DOMP.h(118,10)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(64,31) inlined into RelaxOp2DOMP.h(118,10)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(63,27) inlined into RelaxOp2DOMP.h(119,10)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(64,31) inlined into RelaxOp2DOMP.h(119,10)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(70,32) inlined into RelaxOp2DOMP.h(121,10)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(71,36) inlined into RelaxOp2DOMP.h(121,10)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(128,10)
+<Peeled>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(128,10)
+   remark #15389: vectorization support: reference _M_start has unaligned access   [ GridFun2D.h(120,13) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15460: masked strided loads: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 7 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 2.730 
+   remark #15479: lightweight vector operations: 1 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15481: heavy-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(128,10)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(129,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(130,10)
+<Peeled>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(130,10)
+   remark #15389: vectorization support: reference _M_start has unaligned access   [ GridFun2D.h(120,13) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15460: masked strided loads: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 8 
+   remark #15477: vector loop cost: 2.500 
+   remark #15478: estimated potential speedup: 3.110 
+   remark #15479: lightweight vector operations: 1 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15481: heavy-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(130,10)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(131,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(78,28) inlined into RelaxOp2DOMP.h(133,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(79,32) inlined into RelaxOp2DOMP.h(133,11)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(70,32) inlined into RelaxOp2DOMP.h(134,11)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(71,36) inlined into RelaxOp2DOMP.h(134,11)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(143,11)
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(143,11)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(143,11)
+   <Remainder, Multiversioned v2>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(134,33) inlined into RelaxOp2DOMP.h(144,10)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(145,11)
+<Peeled, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(145,11)
+<Multiversioned v1>
+   remark #15389: vectorization support: reference _M_start has unaligned access   [ GridFun2D.h(130,13) ]
+   remark #15389: vectorization support: reference F64 has unaligned access   [ GridFun2D.h(130,13) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 8 
+   remark #15477: vector loop cost: 1.000 
+   remark #15478: estimated potential speedup: 7.030 
+   remark #15479: lightweight vector operations: 2 
+   remark #15480: medium-overhead vector operations: 1 
+   remark #15488: --- end vector loop cost summary ---
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(145,11)
+<Remainder, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(145,11)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(145,11)
+<Remainder, Multiversioned v2>
+LOOP END
+
+LOOP BEGIN at GridFun2D.h(134,33) inlined into RelaxOp2DOMP.h(146,10)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(100,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(102,13)
+   <Peeled>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(102,13)
+      remark #15389: vectorization support: reference uXTemp.9377 has unaligned access   [ GridFun2D.h(120,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15460: masked strided loads: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 8 
+      remark #15477: vector loop cost: 2.500 
+      remark #15478: estimated potential speedup: 3.110 
+      remark #15479: lightweight vector operations: 1 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15481: heavy-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(102,13)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at TriSolver.h(58,5) inlined into RelaxOp2DOMP.h(103,16)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between F64 line 59 and F64 line 59
+      remark #15346: vector dependence: assumed ANTI dependence between uXTempNew.9377 line 59 and uXTempNew.9377 line 59
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(104,15)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(109,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(111,13)
+   <Peeled>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(111,13)
+      remark #15389: vectorization support: reference uYTemp.9377 has unaligned access   [ GridFun2D.h(130,13) ]
+      remark #15389: vectorization support: reference F64 has unaligned access   [ GridFun2D.h(130,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 8 
+      remark #15477: vector loop cost: 1.000 
+      remark #15478: estimated potential speedup: 7.030 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(111,13)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at TriSolver.h(58,5) inlined into RelaxOp2DOMP.h(112,16)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between F64 line 59 and F64 line 59
+      remark #15346: vector dependence: assumed ANTI dependence between uYTempNew.9377 line 59 and uYTempNew.9377 line 59
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(134,33) inlined into RelaxOp2DOMP.h(113,15)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(122,5)
+   remark #15520: loop was not vectorized: loop with early exits cannot be vectorized unless it meets search loop idiom criteria
+
+   LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(124,14)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between F64 line 120 and F64 line 120
+      remark #15346: vector dependence: assumed ANTI dependence between uXTemp.9377 line 120 and uXTemp.9377 line 120
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(119,33) inlined into RelaxOp2DOMP.h(124,14)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(124,33) inlined into RelaxOp2DOMP.h(126,15)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(137,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(139,15)
+   <Peeled, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(139,15)
+   <Multiversioned v1>
+      remark #15389: vectorization support: reference uYTemp.9377 has unaligned access   [ GridFun2D.h(130,13) ]
+      remark #15389: vectorization support: reference F64 has unaligned access   [ GridFun2D.h(130,13) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 8 
+      remark #15477: vector loop cost: 1.000 
+      remark #15478: estimated potential speedup: 7.030 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(139,15)
+   <Remainder, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(139,15)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(129,33) inlined into RelaxOp2DOMP.h(139,15)
+   <Remainder, Multiversioned v2>
+   LOOP END
+
+   LOOP BEGIN at GridFun2D.h(134,33) inlined into RelaxOp2DOMP.h(141,14)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: TriSolver::apply(TriSolver *, std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>> &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at TriSolver.h(117,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 118 and _M_start line 119
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 119 and _M_start line 118
+LOOP END
+
+LOOP BEGIN at TriSolver.h(123,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between F64 line 124 and F64 line 124
+   remark #15346: vector dependence: assumed ANTI dependence between F64 line 124 and F64 line 124
+LOOP END
+
+LOOP BEGIN at TriSolver.h(123,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at TriSolver.h(128,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between F64 line 129 and F64 line 129
+   remark #15346: vector dependence: assumed ANTI dependence between F64 line 129 and F64 line 129
+LOOP END
+
+LOOP BEGIN at TriSolver.h(128,5)
+<Remainder>
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::vector<RelaxOp2D, std::allocator<RelaxOp2D>>::vector(std::vector<RelaxOp2D, std::allocator<RelaxOp2D>> *, std::vector<RelaxOp2D, std::allocator<RelaxOp2D>>::size_type, const std::vector<RelaxOp2D, std::allocator<RelaxOp2D>>::value_type &, const std::vector<RelaxOp2D, std::allocator<RelaxOp2D>>::allocator_type &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_uninitialized.h(201,8) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_vector.h(307,9)
+   remark #15520: loop was not vectorized: loop with early exits cannot be vectorized unless it meets search loop idiom criteria
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::vector<RelaxOp2D, std::allocator<RelaxOp2D>>::~vector(std::vector<RelaxOp2D, std::allocator<RelaxOp2D>> *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(102,4) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_vector.h(425,9)
+   remark #15382: vectorization support: call to function RelaxOp2D::~RelaxOp2D(RelaxOp2D *) cannot be vectorized   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(93,18) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::_Destroy<std::_Vector_base<RelaxOp2D, std::allocator<RelaxOp2D>>::pointer>(std::_Vector_base<RelaxOp2D, std::allocator<RelaxOp2D>>::pointer, std::_Vector_base<RelaxOp2D, std::allocator<RelaxOp2D>>::pointer)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(102,4) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(127,7)
+   remark #15382: vectorization support: call to function RelaxOp2D::~RelaxOp2D(RelaxOp2D *) cannot be vectorized   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_construct.h(93,18) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_vector.h(307,9)
+<Peeled>
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_vector.h(307,9)
+   remark #15388: vectorization support: reference __first has aligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(762,3) ]
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 3 
+   remark #15477: vector loop cost: 0.750 
+   remark #15478: estimated potential speedup: 3.420 
+   remark #15479: lightweight vector operations: 3 
+   remark #15488: --- end vector loop cost summary ---
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_vector.h(307,9)
+<Remainder>
+   remark #15389: vectorization support: reference __first has unaligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(762,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+LOOP END
+===========================================================================
+
+Begin optimization report for: GridFun2D::operator=(GridFun2D *, const GridFun2D &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(60,18)
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(60,18)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   LOOP END
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(60,18)
+   <Remainder, Multiversioned v2>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::_M_fill_insert(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::iterator, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(470,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(470,5)
+      remark #15389: vectorization support: reference __first has unaligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(704,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 3 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.440 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(470,5)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(475,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(475,5)
+      remark #15389: vectorization support: reference __first has unaligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(762,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 3 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.440 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(475,5)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(484,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(484,5)
+      remark #15389: vectorization support: reference __first has unaligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(704,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 3 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.440 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(703,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(484,5)
+   <Remainder>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(497,5)
+<Peeled>
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(497,5)
+   remark #15388: vectorization support: reference __first has aligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(762,3) ]
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector loop cost summary ---
+   remark #15476: scalar loop cost: 3 
+   remark #15477: vector loop cost: 0.750 
+   remark #15478: estimated potential speedup: 3.420 
+   remark #15479: lightweight vector operations: 3 
+   remark #15488: --- end vector loop cost summary ---
+LOOP END
+
+LOOP BEGIN at /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(760,7) inlined into /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/vector.tcc(497,5)
+<Remainder>
+   remark #15389: vectorization support: reference __first has unaligned access   [ /opt/rh/devtoolset-3/root/usr/include/c++/4.9.2/bits/stl_algobase.h(762,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+LOOP END
+===========================================================================
+
+Begin optimization report for: RelaxOp2D::initialize(RelaxOp2D *, double, double, double, const GridFun2D &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at GridFun2D.h(78,28) inlined into RelaxOp2DOMP.h(21,22)
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+
+   LOOP BEGIN at GridFun2D.h(79,32) inlined into RelaxOp2DOMP.h(21,22)
+      remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(27,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at RelaxOp2DOMP.h(27,5)
+      remark #15389: vectorization support: reference F64 has unaligned access   [ RelaxOp2DOMP.h(28,16) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 5 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.810 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at RelaxOp2DOMP.h(27,5)
+   <Remainder>
+      remark #15389: vectorization support: reference F64 has unaligned access   [ RelaxOp2DOMP.h(28,16) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(30,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at RelaxOp2DOMP.h(30,5)
+      remark #15389: vectorization support: reference F64 has unaligned access   [ RelaxOp2DOMP.h(31,16) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 5 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.810 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at RelaxOp2DOMP.h(30,5)
+   <Remainder>
+      remark #15389: vectorization support: reference F64 has unaligned access   [ RelaxOp2DOMP.h(31,16) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+   LOOP END
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(40,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 41 and _M_start line 43
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 43 and _M_start line 41
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(40,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(51,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 52 and _M_start line 54
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 54 and _M_start line 52
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(51,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(69,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 70 and _M_start line 72
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 72 and _M_start line 70
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(69,5)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(80,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 81 and _M_start line 83
+   remark #15346: vector dependence: assumed OUTPUT dependence between _M_start line 83 and _M_start line 81
+LOOP END
+
+LOOP BEGIN at RelaxOp2DOMP.h(80,5)
+<Remainder>
+LOOP END
+===========================================================================
+
+Begin optimization report for: GridFun2D::initialize(GridFun2D *, long, double, double, long, double, double)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at DoubleArray2D.h(87,13) inlined into GridFun2D.h(55,12)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at DoubleArray2D.h(87,13) inlined into GridFun2D.h(55,12)
+      remark #15389: vectorization support: reference this has unaligned access   [ DoubleArray2D.h(88,17) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 4 
+      remark #15477: vector loop cost: 1.250 
+      remark #15478: estimated potential speedup: 1.650 
+      remark #15479: lightweight vector operations: 2 
+      remark #15480: medium-overhead vector operations: 1 
+      remark #15488: --- end vector loop cost summary ---
+   LOOP END
+
+   LOOP BEGIN at DoubleArray2D.h(87,13) inlined into GridFun2D.h(55,12)
+   <Remainder>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: GridFun2D::initialize(GridFun2D *, const GridFun2D &)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(49,12)
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(49,12)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   LOOP END
+
+   LOOP BEGIN at DoubleArray2D.h(76,13) inlined into GridFun2D.h(49,12)
+   <Remainder, Multiversioned v2>
+   LOOP END
+LOOP END
+===========================================================================

@@ -1,0 +1,96 @@
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 1 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 1.359363e+02 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 2 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 9.051892e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 4 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 6.796549e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 8 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 5.918076e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 12 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 5.713137e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 16 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 5.481992e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 20 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 5.795778e+01 s
+
+==== Douglas ADI Program Start ====
+** alpha_x/alpha_y : 2.000000/2.000000
+** X/Y Panel Count : 8000/8000
+
+==>Using OpenMP With 24 Threads
+
+==== Multi-scale Timstep Relaxation Output XXXX ====
+** Difference between iterates : 	0.000000
+** Iteration Count for multi-scale time scheme :	 56 
+
+** Time it takes to solve the multi-scale timestep solution is 6.071534e+01 s
