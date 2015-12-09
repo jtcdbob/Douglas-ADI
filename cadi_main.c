@@ -1,11 +1,3 @@
-//
-//  main.c
-//  DouglasADI
-//
-//  Created by Bob Chen on 11/12/15.
-//  Copyright © 2015 Bob. All rights reserved.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,12 +6,17 @@
 #include <unistd.h>
 #include <omp.h>
 #include "my_functions.h"
+
+#ifndef PI
 #define PI 3.14159265358979323846
+#endif
 
 int main(int argc, char * argv[]) {
+    // Set up problem parameters
     int M = 200; // Problem size, assume square case
     int threadCount = -1;
 
+    // Read user settings
     int c;
     extern char* optarg;
     const char* optstring = "n:p:";
@@ -29,7 +26,8 @@ int main(int argc, char * argv[]) {
             case 'p': threadCount = atoi(optarg); break;
         }
     }
-
+    // Physical system parameters
+    // For now, we assume a uniform system
     double alpha       = 2.0;
     double waveNumber  = 1.0;
     double alphaX      = alpha;     // Laplace operator-x prefactor
@@ -53,29 +51,28 @@ int main(int argc, char * argv[]) {
     printf("** X/Y Panel Count : %d/%d\n", xPanel, yPanel);
 
     int N = M+1; // vector size
-    //double* f      = (double*) malloc(N*N*sizeof(double));
-    //double* uk     = (double*) calloc(N*N, sizeof(double)); // initialize to 0
-    //double* uLast  = (double*) malloc(N*N*sizeof(double));
-    double* restrict f __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
-    double* restrict uk __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
-    double* restrict uLast __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    //double* restrict f __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    //double* restrict uk __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    //double* restrict uLast __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
+    double* f = (double*) _mm_malloc(N*N*sizeof(double),64);
+    double* uk = (double*) _mm_malloc(N*N*sizeof(double),64);
+    double* uLast = (double*) _mm_malloc(N*N*sizeof(double),64);
     memset(uk, 0.0, N*N);
     double tol = 1.0e-6;  // Stopping tolerance
-
 
     __assume_aligned(f, 64);
     __assume_aligned(uk, 64);
     __assume_aligned(uLast, 64);
-    /*
-        -> y    (j)
-      ---------------------
-     |
-     || x
-     |v
-     |
-     | (i)
-     |
 
+    /*
+          -> y    (j)
+        ---------------------
+       |
+       || x
+       |v
+       |
+       | (i)
+       |
      */
     double x;
     double y;
@@ -88,29 +85,29 @@ int main(int argc, char * argv[]) {
         }
     }
     int index = 0;
+    y   =   yMin + index*hy;
     for(int i = 0; i < N; i++){ // Update x
         x   =   xMin + i*hx;
-        y   =   yMin + index*hy;
         uk[i]  = test_init(x, y, waveNumberX, waveNumberY, alphaX, alphaY);
         f [i]  = 0.0;
     }
     index   = M;
+    y   = yMin + index*hy;
     for(int i = 0; i < N; i++){
         x   = xMin + i*hx;
-        y   = yMin + index*hy;
         uk[index*N + i]  = test_init(x, y, waveNumberX, waveNumberY, alphaX, alphaY);
         f [index*N + i]  = 0.0;
     }
     index = 0;
+    x = xMin + index*hx;
     for(int i = 0; i < N; i++){
-        x = xMin + index*hx;
         y = yMin + i*hy;
         uk[index + i*N]  = test_init(x, y, waveNumberX, waveNumberY, alphaX, alphaY);
         f [index + i*N]  = 0.0;
     }
     index = M;
+    x = xMin + index*hx;
     for(int i = 0; i < N; i++){
-        x = xMin + index*hx;
         y = yMin + i*hy;
         uk[index + i*N]  = test_init(x, y, waveNumberX, waveNumberY, alphaX, alphaY);
         f [index + i*N]  = 0.0;
@@ -118,27 +115,30 @@ int main(int argc, char * argv[]) {
 
    // Set up OpenMP parameters
 #ifdef _OPENMP
-    //if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
-    //else omp_set_num_threads(threadCount);
-    //printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
+    if(threadCount > omp_get_max_threads() || threadCount <= 0) omp_set_num_threads(omp_get_max_threads());
+    else omp_set_num_threads(threadCount);
+    printf("\n==>Using OpenMP With %d Threads\n\n",omp_get_max_threads());
 #endif
 
     // Initialize solver variables
-    const int maxSweepSize = (int)ceil(log(M)/log(2)) + 1;
     double dt = dt_0;
-
     double ax = dt*alphaX/(hx*hx);
     double ay = dt*alphaY/(hy*hy);
     double bx = -2.0 * ax;
     double by = -2.0 * ay;
-
+    
+    // Initialize solver parameters
+    const int maxSweepSize = (int)ceil(log(M)/log(2)) + 1;
     double diffNorm = 2*tol;
     int   iterMax  = 200;
-    int   iter     = 0;
+    int   counter  = 0;
     double ukNorm = 0;
 
-    //double* fstar = (double*) malloc(maxSweepSize*N*N*sizeof(double));
-    double* restrict fstar __attribute__((aligned(64))) = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
+    // Initialize right hand side for each timestep and scratch space
+    //double* restrict fstar __attribute__((aligned(64))) = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
+    double* fstar = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
+    //double* restrict scratch __attribute__((aligned(64))) = (double*) _mm_malloc(N*sizeof(double),64);
+    double* scratch = (double*) _mm_malloc(N*sizeof(double),64);
     for (int i = 0; i < maxSweepSize; i++) {
         int offset = i*N*N;
         for (int j = 0; j < N*N; j++) {
@@ -147,32 +147,38 @@ int main(int argc, char * argv[]) {
         dt *= 2*2;
     }
 
-    double* restrict scratch __attribute__((aligned(64))) = (double*) _mm_malloc(N*sizeof(double),64);
-
-    printf("\n");
-
+    // Start timer and main solver loop
     double t0 = omp_get_wtime();
-    while((diffNorm > tol)&&(iter < iterMax)){
-        memcpy(uLast, uk, N*N*sizeof(double)); // This can be avoided by swapping the roles for each iteration
+    int half_iteration = 0;
+    while((diffNorm > tol)&&(counter < iterMax)){
+        memcpy(uLast, uk, N*N*sizeof(double)); // Save the last result for checking
         for (int j = 0; j < maxSweepSize; j++) {
             relaxOperation(uk, fstar+j*N*N, scratch, ax, bx, N);
             ax *= 2*2;
             bx *= 2*2;
         }
-        for (int j = maxSweepSize-1; j > -1 ; j--) {
+        ukNorm = normInf_cache(uk,N);
+        for ( int i = 0; i < N*N; i++) {
+            uLast[i] -= uk[i];
+        }
+        diffNorm = normInf_cache(uLast, N) / ukNorm; // Get difference norm
+        if(diffNorm < tol) { half_iteration = 1; break;}
+        memcpy(uLast, uk, N*N*sizeof(double));
+        for (int j = maxSweepSize-2; j > -1 ; j--) {
             ax /= 2*2;
             bx /= 2*2;
             relaxOperation(uk, fstar+j*N*N, scratch, ax, bx, N);
         }
-        ukNorm = normInf(uk, N);    // Check difference between iterates
+        ukNorm = normInf_cache(uk,N);
         for ( int i = 0; i < N*N; i++) {
             uLast[i] -= uk[i];
         }
-        diffNorm = normInf(uLast, N) / ukNorm; // uLast.normInf();
-        iter++; // Update iterate
+        diffNorm = normInf_cache(uLast, N) / ukNorm; // Get difference norm
+        counter++; // Update counter
     }
     double t1 = omp_get_wtime();
 
+    // free allocated spaces
     _mm_free(scratch);
     _mm_free(fstar);
     _mm_free(f);
@@ -180,12 +186,8 @@ int main(int argc, char * argv[]) {
     _mm_free(uLast);
 
     printf("==== Multi-scale Timstep Relaxation Output XXXX ====\n");
-    printf("** Difference between iterates : \t\t\t\t%3.10f\n",diffNorm);
-    printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",iter*2*maxSweepSize);
-    // Timing results
-//    printf("** Time it takes to initialize the multi-scale timestep solution is %e ms\n", elapsed_1);
-    printf("** Time it takes to solve the multi-scale timestep solution is %e ms\n", t1-t0);
-//    printf("** The total time is is %e ms\n", elapsed_1+elapsed_2);
-
+    printf("** Difference between iterates : \t%lf\n",diffNorm);
+    printf("** Iteration Count for multi-scale time scheme :\t %d \n\n",counter*2*maxSweepSize + half_iteration * maxSweepSize);
+    printf("** Time it takes to solve the multi-scale timestep solution is %e s\n", t1-t0);
     return 0;
 }

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{k+kt}{void} \PYGdefault{n+nf}{transpose\PYGdefaultZus{}cache}\PYGdefault{p}{(}\PYGdefault{k+kt}{double}\PYGdefault{o}{*} \PYGdefault{k+kr}{restrict} \PYGdefault{n}{dst}\PYGdefault{p}{,}\PYGdefault{k}{const} \PYGdefault{k+kt}{double}\PYGdefault{o}{*} \PYGdefault{k+kr}{restrict} \PYGdefault{n}{src}\PYGdefault{p}{,} \PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{n}\PYGdefault{p}{)\PYGdefaultZob{}}
+    \PYGdefault{n}{\PYGdefaultZus{}\PYGdefaultZus{}assume\PYGdefaultZus{}aligned}\PYGdefault{p}{(}\PYGdefault{n}{dst}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{64}\PYGdefault{p}{);}
+    \PYGdefault{n}{\PYGdefaultZus{}\PYGdefaultZus{}assume\PYGdefaultZus{}aligned}\PYGdefault{p}{(}\PYGdefault{n}{src}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{64}\PYGdefault{p}{);}
+    \PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{block}\PYGdefault{o}{=}\PYGdefault{l+m+mi}{64}\PYGdefault{p}{;}
+    \PYGdefault{k}{for}\PYGdefault{p}{(}\PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{i} \PYGdefault{o}{=} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{;} \PYGdefault{n}{i} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{n}\PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{n}{block}\PYGdefault{p}{;} \PYGdefault{n}{i} \PYGdefault{o}{+=} \PYGdefault{n}{block}\PYGdefault{p}{)}
+        \PYGdefault{k}{for}\PYGdefault{p}{(}\PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{j}\PYGdefault{o}{=}\PYGdefault{l+m+mi}{0}\PYGdefault{p}{;} \PYGdefault{n}{j} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{n}\PYGdefault{p}{;} \PYGdefault{o}{++}\PYGdefault{n}{j} \PYGdefault{p}{)\PYGdefaultZob{}}
+            \PYGdefault{k}{for}\PYGdefault{p}{(}\PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{b} \PYGdefault{o}{=} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{;} \PYGdefault{n}{b} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{block} \PYGdefault{p}{;} \PYGdefault{o}{++}\PYGdefault{n}{b}\PYGdefault{p}{)\PYGdefaultZob{}}
+                \PYGdefault{n}{dst}\PYGdefault{p}{[}\PYGdefault{n}{j}\PYGdefault{o}{*}\PYGdefault{n}{n}\PYGdefault{o}{+}\PYGdefault{n}{b}\PYGdefault{p}{]}\PYGdefault{o}{=}\PYGdefault{n}{src}\PYGdefault{p}{[}\PYGdefault{n}{b}\PYGdefault{o}{*}\PYGdefault{n}{n}\PYGdefault{o}{+}\PYGdefault{n}{j}\PYGdefault{p}{];}
+            \PYGdefault{p}{\PYGdefaultZcb{}}
+        \PYGdefault{p}{\PYGdefaultZcb{}}
+    \PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{start} \PYGdefault{o}{=} \PYGdefault{n}{n} \PYGdefault{o}{\PYGdefaultZhy{}} \PYGdefault{n}{n}\PYGdefault{o}{\PYGdefaultZpc{}}\PYGdefault{n}{block}\PYGdefault{p}{;}
+    \PYGdefault{k}{for}\PYGdefault{p}{(}\PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{j}\PYGdefault{o}{=}\PYGdefault{l+m+mi}{0}\PYGdefault{p}{;} \PYGdefault{n}{j} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{n}\PYGdefault{p}{;} \PYGdefault{o}{++}\PYGdefault{n}{j} \PYGdefault{p}{)}
+        \PYGdefault{k}{for}\PYGdefault{p}{(}\PYGdefault{k+kt}{size\PYGdefaultZus{}t} \PYGdefault{n}{b} \PYGdefault{o}{=} \PYGdefault{n}{start}\PYGdefault{p}{;} \PYGdefault{n}{b} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{n}\PYGdefault{p}{;} \PYGdefault{o}{++}\PYGdefault{n}{b}\PYGdefault{p}{)\PYGdefaultZob{}}
+            \PYGdefault{n}{dst}\PYGdefault{p}{[}\PYGdefault{n}{j}\PYGdefault{o}{*}\PYGdefault{n}{n}\PYGdefault{o}{+}\PYGdefault{n}{b}\PYGdefault{p}{]}\PYGdefault{o}{=}\PYGdefault{n}{src}\PYGdefault{p}{[}\PYGdefault{n}{b}\PYGdefault{o}{*}\PYGdefault{n}{n}\PYGdefault{o}{+}\PYGdefault{n}{j}\PYGdefault{p}{];}
+        \PYGdefault{p}{\PYGdefaultZcb{}}
+\PYGdefault{p}{\PYGdefaultZcb{}}
+\end{Verbatim}

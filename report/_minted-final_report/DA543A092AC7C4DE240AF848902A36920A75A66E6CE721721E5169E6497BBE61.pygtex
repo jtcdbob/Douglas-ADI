@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{k}{for} \PYGdefault{p}{(}\PYGdefault{k+kt}{int} \PYGdefault{n}{i} \PYGdefault{o}{=} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{;} \PYGdefault{n}{i} \PYGdefault{o}{\PYGdefaultZlt{}} \PYGdefault{n}{n}\PYGdefault{o}{*}\PYGdefault{n}{n}\PYGdefault{p}{;} \PYGdefault{n}{i}\PYGdefault{o}{++}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+	\PYGdefault{n}{ustar}\PYGdefault{p}{[}\PYGdefault{n}{i}\PYGdefault{p}{]} \PYGdefault{o}{\PYGdefaultZhy{}=} \PYGdefault{l+m+mf}{0.5}\PYGdefault{o}{*}\PYGdefault{k+kt}{u\PYGdefaultZus{}t}\PYGdefault{p}{[}\PYGdefault{n}{i}\PYGdefault{p}{];}
+\PYGdefault{p}{\PYGdefaultZcb{}}
+\end{Verbatim}

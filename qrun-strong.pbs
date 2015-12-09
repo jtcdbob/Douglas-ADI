@@ -1,0 +1,17 @@
+#!/bin/sh -l
+
+#PBS -l nodes=1:ppn=24
+#PBS -l walltime=3:00:00
+#PBS -N Z_douglas-adi-strong-scaling
+#PBS -j oe
+
+module load cs5220
+cd $PBS_O_WORKDIR
+./douglas-adi -n 4000 -p 1
+./douglas-adi -n 4000 -p 2
+./douglas-adi -n 4000 -p 4
+./douglas-adi -n 4000 -p 8
+./douglas-adi -n 4000 -p 12
+./douglas-adi -n 4000 -p 16
+./douglas-adi -n 4000 -p 20
+./douglas-adi -n 4000 -p 24

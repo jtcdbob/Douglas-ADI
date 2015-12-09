@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2015 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 DEC 2015 19:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -259,6 +259,14 @@ Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \colbreak@box=\box55
 \mc@col@check@num=\count115
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip52
+\fb@frw=\dimen132
+\fb@frh=\dimen133
+\FrameRule=\dimen134
+\FrameSep=\dimen135
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -311,7 +319,7 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen132
+\@linkdim=\dimen136
 \Hy@linkcounter=\count116
 \Hy@pagecounter=\count117
 
@@ -337,10 +345,10 @@ Package hyperref Info: Bookmarks ON on input line 4688.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen133
+\XeTeXLinkMargin=\dimen137
 \Fld@menulength=\count120
-\Field@Width=\dimen134
-\Fld@charsize=\dimen135
+\Field@Width=\dimen138
+\Fld@charsize=\dimen139
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -367,7 +375,7 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip52
+\Hy@SectionHShift=\skip53
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
@@ -375,13 +383,13 @@ Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen136
-\captionmargin@=\dimen137
-\captionwidth=\dimen138
-\caption@tempdima=\dimen139
-\caption@indent=\dimen140
-\caption@parindent=\dimen141
-\caption@hangindent=\dimen142
+\captionmargin=\dimen140
+\captionmargin@=\dimen141
+\captionwidth=\dimen142
+\caption@tempdima=\dimen143
+\caption@indent=\dimen144
+\caption@parindent=\dimen145
+\caption@hangindent=\dimen146
 )
 \c@ContinuedFloat=\count126
 Package caption Info: float package is loaded.
@@ -389,66 +397,66 @@ Package caption Info: hyperref package is loaded.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen143
-\lightrulewidth=\dimen144
-\cmidrulewidth=\dimen145
-\belowrulesep=\dimen146
-\belowbottomsep=\dimen147
-\aboverulesep=\dimen148
-\abovetopsep=\dimen149
-\cmidrulesep=\dimen150
-\cmidrulekern=\dimen151
-\defaultaddspace=\dimen152
+\heavyrulewidth=\dimen147
+\lightrulewidth=\dimen148
+\cmidrulewidth=\dimen149
+\belowrulesep=\dimen150
+\belowbottomsep=\dimen151
+\aboverulesep=\dimen152
+\abovetopsep=\dimen153
+\cmidrulesep=\dimen154
+\cmidrulekern=\dimen155
+\defaultaddspace=\dimen156
 \@cmidla=\count127
 \@cmidlb=\count128
-\@aboverulesep=\dimen153
-\@belowrulesep=\dimen154
+\@aboverulesep=\dimen157
+\@belowrulesep=\dimen158
 \@thisruleclass=\count129
 \@lastruleclass=\count130
-\@thisrulewidth=\dimen155
+\@thisrulewidth=\dimen159
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lettrine/lettrine.sty
 File: lettrine.sty 2015/02/16 v1.8 (Daniel Flipo)
 \c@DefaultLines=\count131
 \c@DefaultDepth=\count132
-\DefaultFindent=\dimen156
-\DefaultNindent=\dimen157
-\DefaultSlope=\dimen158
-\DiscardVskip=\dimen159
+\DefaultFindent=\dimen160
+\DefaultNindent=\dimen161
+\DefaultSlope=\dimen162
+\DiscardVskip=\dimen163
 \L@lbox=\box56
 \L@tbox=\box57
 \c@L@lines=\count133
 \c@L@depth=\count134
-\L@Pindent=\dimen160
-\L@Findent=\dimen161
-\L@Nindent=\dimen162
-\L@lraise=\dimen163
-\L@first=\dimen164
-\L@next=\dimen165
-\L@slope=\dimen166
-\L@height=\dimen167
-\L@novskip=\dimen168
-\LettrineWidth=\dimen169
-\LettrineHeight=\dimen170
-\LettrineDepth=\dimen171
+\L@Pindent=\dimen164
+\L@Findent=\dimen165
+\L@Nindent=\dimen166
+\L@lraise=\dimen167
+\L@first=\dimen168
+\L@next=\dimen169
+\L@slope=\dimen170
+\L@height=\dimen171
+\L@novskip=\dimen172
+\LettrineWidth=\dimen173
+\LettrineHeight=\dimen174
+\LettrineDepth=\dimen175
 
 Loading lettrine.cfg
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lettrine/lettrine.cfg))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/paralist/paralist.sty
 Package: paralist 2013/06/09 v2.4 Extended list environments
-\pltopsep=\skip53
-\plpartopsep=\skip54
-\plitemsep=\skip55
-\plparsep=\skip56
+\pltopsep=\skip54
+\plpartopsep=\skip55
+\plitemsep=\skip56
+\plparsep=\skip57
 \pl@lab=\toks31
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/abstract/abstract.sty
 Package: abstract 2009/06/08 v1.2a configurable abstracts
-\abstitleskip=\skip57
-\absleftindent=\skip58
-\absrightindent=\skip59
-\absparindent=\skip60
-\absparsep=\skip61
+\abstitleskip=\skip58
+\absleftindent=\skip59
+\absrightindent=\skip60
+\absparindent=\skip61
+\absparsep=\skip62
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/minted/minted.sty
 Package: minted 2015/01/31 v2.0 Yet another Pygments shim for LaTeX
@@ -472,14 +480,14 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count138
 \calc@Bcount=\count139
-\calc@Adimen=\dimen172
-\calc@Bdimen=\dimen173
-\calc@Askip=\skip62
-\calc@Bskip=\skip63
+\calc@Adimen=\dimen176
+\calc@Bdimen=\dimen177
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count140
-\calc@Cskip=\skip64
+\calc@Cskip=\skip65
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
@@ -511,31 +519,31 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count144
 \output=\toks32
 \linenoprevgraf=\count145
-\linenumbersep=\dimen174
-\linenumberwidth=\dimen175
+\linenumbersep=\dimen178
+\linenumberwidth=\dimen179
 \c@linenumber=\count146
 \c@pagewiselinenumber=\count147
 \c@LN@truepage=\count148
 \c@internallinenumber=\count149
 \c@internallinenumbers=\count150
-\quotelinenumbersep=\dimen176
-\bframerule=\dimen177
-\bframesep=\dimen178
+\quotelinenumbersep=\dimen180
+\bframerule=\dimen181
+\bframesep=\dimen182
 \bframebox=\box59
 LaTeX Info: Redefining \\ on input line 3056.
 )
 \minted@appexistsfile=\read2
-\FV@BreakIndent=\dimen179
-\FV@BreakSymbolSepLeft=\dimen180
-\FV@BreakSymbolSepRight=\dimen181
-\FV@BreakSymbolIndentLeft=\dimen182
+\FV@BreakIndent=\dimen183
+\FV@BreakSymbolSepLeft=\dimen184
+\FV@BreakSymbolSepRight=\dimen185
+\FV@BreakSymbolIndentLeft=\dimen186
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 677.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-\FV@BreakSymbolIndentRight=\dimen183
+\FV@BreakSymbolIndentRight=\dimen187
 \c@FancyVerbLineBreakLast=\count151
 \FV@LineBox=\box60
 \FV@LineIndentBox=\box61
@@ -554,52 +562,55 @@ runsystem(rm "final_report.aex")...executed.
 
 (./_minted-final_report/default.pygstyle)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip65
-\f@ncyO@elh=\skip66
-\f@ncyO@erh=\skip67
-\f@ncyO@olh=\skip68
-\f@ncyO@orh=\skip69
-\f@ncyO@elf=\skip70
-\f@ncyO@erf=\skip71
-\f@ncyO@olf=\skip72
-\f@ncyO@orf=\skip73
+\fancy@headwidth=\skip66
+\f@ncyO@elh=\skip67
+\f@ncyO@erh=\skip68
+\f@ncyO@olh=\skip69
+\f@ncyO@orh=\skip70
+\f@ncyO@elf=\skip71
+\f@ncyO@erf=\skip72
+\f@ncyO@olf=\skip73
+\f@ncyO@orf=\skip74
 )
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 30.
+less on input line 28.
 
-(./final_report.aux)
+(./final_report.aux
+
+LaTeX Warning: Label `detector' multiply defined.
+
+)
 \openout1 = `final_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Try loading font information for T1+pplx on input line 47.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1pplx.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Try loading font information for T1+pplx on input line 44.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1pplx.fd
 File: t1pplx.fd 2004/09/06 font definitions for T1/pplx.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count154
-\scratchdimen=\dimen184
+\scratchdimen=\dimen188
 \scratchbox=\box63
 \nofMPsegments=\count155
 \nofMParguments=\count156
 \everyMPshowfont=\toks34
 \MPscratchCnt=\count157
-\MPscratchDim=\dimen185
+\MPscratchDim=\dimen189
 \MPnumerator=\count158
 \makeMPintoPDFobject=\count159
 \everyMPtoPDFconversion=\toks35
@@ -618,7 +629,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 47.
+LaTeX Info: Redefining \microtypecontext on input line 44.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -668,7 +679,7 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 47.
+Package hyperref Info: Link coloring OFF on input line 44.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -677,9 +688,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count160
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
 
 (./final_report.out) (./final_report.out)
 \@outlinefile=\write6
@@ -706,54 +717,54 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <24> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 50.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 50.
-LaTeX Font Info:    Try loading font information for OT1+pplx on input line 50.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 47.
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 50.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 50.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 50.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 50.
+(Font)              scaled to size 12.50409pt on input line 47.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 50.
+(Font)              scaled to size 9.37807pt on input line 47.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 50.
+(Font)              scaled to size 7.29405pt on input line 47.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 50.
+(Font)              scaled to size 12.50409pt on input line 47.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 50.
+(Font)              scaled to size 9.37807pt on input line 47.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 50.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 50.
+(Font)              scaled to size 7.29405pt on input line 47.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 47.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1zplm.fd
@@ -767,23 +778,36 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 54.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 51.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 63.
-\openout3 = `final_report.pyg'.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 60.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 64.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 64.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 64.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.40997pt on input line 64.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 64.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 64.
 
+Overfull \hbox (13.31247pt too wide) detected at line 69
+\OT1/zplm/m/n/10.95 (\OT1/zplm/b/n/10.95 I \OMS/zplm/m/n/10.95 ^^@ []\OML/zplm/
+m/it/10.95 []\OT1/zplm/m/n/10.95 ^^A[])\OT1/zplm/b/n/10.95 u[] \OT1/zplm/m/n/1
+0.95 = (\OT1/zplm/b/n/10.95 I \OT1/zplm/m/n/10.95 + []\OML/zplm/m/it/10.95 []\
+OT1/zplm/m/n/10.95 ^^A\OT1/zplm/b/n/10.95 x \OT1/zplm/m/n/10.95 + \OML/zplm/m/i
+t/10.95 dt[]\OT1/zplm/m/n/10.95 ^^A\OML/zplm/m/it/10.95 y\OT1/zplm/m/n/10.95 )
+\OT1/zplm/b/n/10.95 u[] \OMS/zplm/m/n/10.95 ^^@ \OML/zplm/m/it/10.95 dt\OT1/zpl
+m/b/n/10.95 f
+ []
 
-(./_minted-final_report/68B329DA9893E34099C7D8AD5CB9C9400A75A66E6CE721721E5169E
-6497BBE61.pygtex
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-)
-runsystem(rm "final_report.pyg")...executed.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 87.
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -793,38 +817,131 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 87.
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2]
+Overfull \hbox (16.30313pt too wide) in paragraph at lines 118--140
+$[]$ 
+ []
+
+\openout3 = `final_report.pyg'.
+
+
+(./_minted-final_report/DA543A092AC7C4DE240AF848902A36920A75A66E6CE721721E5169E
+6497BBE61.pygtex
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2.
+)
+\openout3 = `final_report.pyg'.
+
+
+(./_minted-final_report/32D14ACFD7CC2CB920A4AA07ACD6A6680A75A66E6CE721721E5169E
+6497BBE61.pygtex)
+Overfull \hbox (16.30313pt too wide) in paragraph at lines 153--175
+$[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
+Overfull \hbox (16.30313pt too wide) in paragraph at lines 176--203
+[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4] <performance.jpg, id=110, 773.89125pt x 555.07375pt>
+File: performance.jpg Graphic file (type jpg)
+ <use performance.jpg>
+Package pdftex.def Info: performance.jpg used on input line 229.
+(pdftex.def)             Requested size: 199.99695pt x 143.44337pt.
+LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 230.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5] <weak_scaling.jpg, id=115, 773.89125pt x 556.0775pt>
+File: weak_scaling.jpg Graphic file (type jpg)
+
+<use weak_scaling.jpg>
+Package pdftex.def Info: weak_scaling.jpg used on input line 239.
+(pdftex.def)             Requested size: 199.99695pt x 143.70277pt.
+ <strong_scaling.jpg, id=116, 773.89125pt x 557.08125pt>
+File: strong_scaling.jpg Graphic file (type jpg)
+
+<use strong_scaling.jpg>
+Package pdftex.def Info: strong_scaling.jpg used on input line 244.
+(pdftex.def)             Requested size: 199.99695pt x 143.96217pt.
+\openout3 = `final_report.pyg'.
+
+
+(./_minted-final_report/68B329DA9893E34099C7D8AD5CB9C9400A75A66E6CE721721E5169E
+6497BBE61.pygtex)
+runsystem(rm "final_report.pyg")...executed.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 257.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6 <./performance.jpg> <./weak_scaling.jpg> <./strong_scaling.jpg>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 257.
 
 (./final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 87.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 87.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 257.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 257.
+Package rerunfilecheck Info: File `final_report.out' has not changed.
+(rerunfilecheck)             Checksum: 0E2AAE214491F2E86C939AF58D9090C3;1130.
 
 
-Package rerunfilecheck Warning: File `final_report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: Checksums for `final_report.out':
-(rerunfilecheck)             Before: E04744EE6609B5CAE966BCBA7B9789AB;254
-(rerunfilecheck)             After:  0BEFE1CCC2AE07B62230C8D6945745E7;1311.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 87.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 257.
  ) 
 Here is how much of TeX's memory you used:
- 12688 strings out of 493089
- 199514 string characters out of 6134842
- 453785 words of memory out of 5000000
- 15890 multiletter control sequences out of 15000+600000
- 41006 words of font info for 87 fonts, out of 8000000 for 9000
+ 13041 strings out of 493089
+ 204159 string characters out of 6134842
+ 463449 words of memory out of 5000000
+ 16027 multiletter control sequences out of 15000+600000
+ 68523 words of font info for 259 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,43p,918b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on final_report.pdf (1 page, 45030 bytes).
+ 36i,12n,43p,961b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/p
+alatino/uplri8a.pfb>
+Output written on final_report.pdf (6 pages, 1508483 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 30761 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 147 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 41632 words of extra memory for PDF output out of 42996 (max. 10000000)
 

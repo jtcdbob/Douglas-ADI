@@ -1,13 +1,15 @@
 CC=icc
-CFLAGS=-g -std=c99
+CFLAGS=-g -std=c99 -pedantic -Wall -Werror
 
 # If you're using icc, these are good flags to try
-OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ipo -restrict\
+OPTFLAGS=-O3 -no-prec-div -xcore-avx2 -ftree-vectorize\
+		 -opt-prefetch -ansi-alias -vec-threshold0 -ip\
+		 #-no-prec-div -xcore-avx2 -ipo -restrict\
 		 -unroll-agressive -ftree-vectorize -opt-prefetch\
-		 -ansi-alias  #-ip
+		 -ansi-alias  -vec-threshold0 -ip
 
 # Add this for the vectorization reports
 ANALYSIS=-qopt-report=5 -qopt-report-phase=vec
 
 CFLAGS+=$(OPTFLAGS) $(ANALYSIS)
-OMP_CFLAGS=$(CFLAGS) -openmp #-D_OPENMP
+OMP_CFLAGS=$(CFLAGS) -openmp -D_OPENMP
