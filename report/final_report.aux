@@ -28,21 +28,32 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Vectorization}{4}{subsection.3.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Other changes}{5}{subsection.3.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}OpenMP and Load Balancing}{5}{subsection.3.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Performance}{5}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Comparison with Reference Code}{5}{subsection.4.1}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{my-label}{{\caption@xref {my-label}{ on input line 226}}{5}{}{table.caption.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Scalability test for C and C++ code. The performance is measured by how much time (s) it takes to run problem of fixed size (N). Both serial and parallel codes are tested.\relax }}{5}{table.caption.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The performance comparison of C vs. C++ implementation (both serial and parallel). The thread number (16) is chosen so that the parallel code gets close nearly maximum performance.\relax }}{6}{figure.caption.2}}
+\newlabel{performance}{{1}{6}{The performance comparison of C vs. C++ implementation (both serial and parallel). The thread number (16) is chosen so that the parallel code gets close nearly maximum performance.\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Strong \& Weak Scaling}{6}{subsection.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Weak scaling plot for C code with constant workload for each thread. Workloads are chosen to be $N/n = 200,\nobreakspace  {}400, \nobreakspace  {}600$. Part of the $N/n = 600$ plot is missing because we exceeded the limit of available physical memory.\relax }}{6}{figure.caption.3}}
+\newlabel{weak}{{2}{6}{Weak scaling plot for C code with constant workload for each thread. Workloads are chosen to be $N/n = 200,~400, ~600$. Part of the $N/n = 600$ plot is missing because we exceeded the limit of available physical memory.\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Strong scaling for C code with constant total workload. The total workloads are chosen to be $N = 4000,\nobreakspace  {}8000,\nobreakspace  {}10000$.\relax }}{7}{figure.caption.4}}
+\newlabel{strong}{{3}{7}{Strong scaling for C code with constant total workload. The total workloads are chosen to be $N = 4000,~8000,~10000$.\relax }{figure.caption.4}{}}
+\newlabel{my-label}{{\caption@xref {my-label}{ on input line 266}}{7}{Strong \& Weak Scaling}{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Strong scaling for C code for $N = 8000$ test case.\relax }}{7}{table.caption.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Parallel efficiency plot for $N = 4000$ case.\relax }}{7}{figure.caption.6}}
+\newlabel{efficiency}{{4}{7}{Parallel efficiency plot for $N = 4000$ case.\relax }{figure.caption.6}{}}
+\newlabel{my-label}{{\caption@xref {my-label}{ on input line 284}}{7}{Strong \& Weak Scaling}{table.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Parallel Efficiency Plot for $N = 4000$ test case.\relax }}{7}{table.caption.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{8}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Results}{8}{subsection.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}What else could be done}{8}{subsection.5.2}}
+\bibcite{A Note on the Alternating Direction Implicit Method for the Numerical Solution of Heat Flow Problems}{1}
+\bibcite{book}{2}
+\bibcite{knuthwebsite}{3}
 \gdef\minted@oldcachelist{,
   default.pygstyle,
   DA543A092AC7C4DE240AF848902A36920A75A66E6CE721721E5169E6497BBE61.pygtex,
-  32D14ACFD7CC2CB920A4AA07ACD6A6680A75A66E6CE721721E5169E6497BBE61.pygtex,
-  68B329DA9893E34099C7D8AD5CB9C9400A75A66E6CE721721E5169E6497BBE61.pygtex}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Performance}{6}{section.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Comparison with Previous Work}{6}{subsection.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The speed comparison of C vs. C++ implementation.\relax }}{6}{figure.caption.1}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{detector}{{1}{6}{The speed comparison of C vs. C++ implementation.\relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Strong \& Weak Scaling}{6}{subsection.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Weak scaling for C code.\relax }}{6}{figure.caption.2}}
-\newlabel{detector}{{2}{6}{Weak scaling for C code.\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Strong scaling for C code.\relax }}{6}{figure.caption.3}}
-\newlabel{detector}{{3}{6}{Strong scaling for C code.\relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{6}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}What has been done}{6}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}What might be interesting to look into}{6}{subsection.5.2}}
+  32D14ACFD7CC2CB920A4AA07ACD6A6680A75A66E6CE721721E5169E6497BBE61.pygtex}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Appendix}{10}{section.6}}
