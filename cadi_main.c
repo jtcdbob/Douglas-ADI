@@ -51,9 +51,6 @@ int main(int argc, char * argv[]) {
     printf("** X/Y Panel Count : %d/%d\n", xPanel, yPanel);
 
     int N = M+1; // vector size
-    //double* restrict f __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
-    //double* restrict uk __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
-    //double* restrict uLast __attribute__((aligned(64))) = (double*) _mm_malloc(N*N*sizeof(double),64);
     double* f = (double*) _mm_malloc(N*N*sizeof(double),64);
     double* uk = (double*) _mm_malloc(N*N*sizeof(double),64);
     double* uLast = (double*) _mm_malloc(N*N*sizeof(double),64);
@@ -135,9 +132,7 @@ int main(int argc, char * argv[]) {
     double ukNorm = 0;
 
     // Initialize right hand side for each timestep and scratch space
-    //double* restrict fstar __attribute__((aligned(64))) = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
     double* fstar = (double*) _mm_malloc(maxSweepSize*N*N*sizeof(double),64);
-    //double* restrict scratch __attribute__((aligned(64))) = (double*) _mm_malloc(N*sizeof(double),64);
     double* scratch = (double*) _mm_malloc(N*sizeof(double),64);
     for (int i = 0; i < maxSweepSize; i++) {
         int offset = i*N*N;
