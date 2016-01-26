@@ -1,4 +1,4 @@
-CC=clang
+CC=clang++
 CFLAGS=-g3 -DSYSTIME
 
 # If you're using clang, these are good flags to try
